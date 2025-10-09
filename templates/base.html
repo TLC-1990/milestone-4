@@ -42,12 +42,12 @@
 <body>
     <header class="container-fluid fixed-top">
         <div class="row">
-            <div class="col-12 col-lg-3 my-auto py-lg-0 text-center text-lg-left">
+            <div class="col-12 col-lg-6 my-auto py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
                     <h2 class="logo-font text-black my-0"> Jane L.C. Online Studio </h2>
                 </a>
             </div>
-            <div class="col-12 col-lg-3 my-auto py-1 py-lg-0">
+            <div class="col-12 col-lg-6 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item dropdown">
                         <a class="text-black nav-link" href="#" id="user-options" data-toggle="droopdown"
@@ -78,7 +78,7 @@
                                     {% if grand_total %}
                                     ${{ grand_total|floatformat:2 }}
                                     {% else %}
-                                    $0.00
+                                    £0.00
                                     {% endif %}
                                 </p>
                             </div>

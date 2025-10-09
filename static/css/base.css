@@ -1,0 +1,11 @@
+html {
+    height: 100%
+}
+
+body {
+    background: url('/media/homepage_gallery_image.JPG') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: bisque;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
