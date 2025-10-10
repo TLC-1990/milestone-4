@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_header %}
-<div class="container header-container">
+<div class="container-fluid header-container">
     <div class="row">
         <div class="col">
 
@@ -12,16 +12,17 @@
 {% endblock %}
 
 {% block content %}
-<div class="container h-100">
-    <div class="row h-100">
-        <div class="col-12 my-auto">
-            <h1 display-4 logo-font text-black>
-                A world of colour awaits! <br>
-                Say goodbye to boring walls
+<div class="container-fluid colour-block">
+    <div class="row h-100 w-100">
+        <div class="col-12 pb-5 d-flex justify-content-center align-items-center h-100 homepage-text">
+            <h1 class="display-4 logo-font text-black">
+                A world of colour awaits!
             </h1>
+            <h3 class="logo-font text-black"> Say goodbye to boring walls with a host of original artworks created in
+                the heart of Wiltshire </h3>
             <div class="my-3">
                 <h4>
-                    <a href="" class="enter-shop-button btn btn-lg rounded-1 py-2"> Enter here </a>
+                    <a href="" class="enter-shop-button btn btn-lg border-black rounded-1 py-2"> Enter here </a>
                 </h4>
             </div>
         </div>
