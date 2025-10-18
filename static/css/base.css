@@ -8,6 +8,7 @@ body {
     height: calc(100vh - 164px);
     color: bisque;
     font-family: "Tangerine", cursive;
+    font-size: 1rem;
 }
 
 
@@ -47,8 +48,13 @@ body {
 }
 
 #topnav {
-    background-color: bisque;
-    border-bottom: 5px solid #86c295;
+    background-color: bisque !important;
+    border-bottom: 5px solid #86c295 !important;
+}
+
+.navbar.navbar-light {
+    background-color: bisque !important;
+    border-bottom: 5px solid #86c295 !important;
 }
 
 .enter-shop-button {
@@ -82,17 +88,31 @@ body {
     z-index: -1;
 }
 
+.detail {
+    font-size: 1.2rem !important;
+}
+
+
 /* Media Queries */
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
+    body {
+        font-size: 1.5rem;
+    }
+
     .container {
         max-width: 80%;
     }
+
 }
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
+    body {
+        font-size: 1.25rem;
+    }
+
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
@@ -103,5 +123,15 @@ body {
 
     .header-container {
         padding-top: 164px;
+    }
+}
+
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 116px;
+    }
+
+    body {
+        height: calc(100vh - 116px);
     }
 }
