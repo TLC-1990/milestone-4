@@ -3,7 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Category(models.Model):
-
+    """
+    Represents a category for grouping products.
+    """
     class Meta:
         verbose_name_plural = 'Categories'
 
@@ -15,7 +17,11 @@ class Category(models.Model):
     
     def get_friendly_name(self):
         return self.friendly_name
+    
 class Product(models.Model):
+    """
+    Represents the fields of a product in the e-commerce store.
+    """
     category=models.ForeignKey('Category',null=True,blank=True,on_delete=models.SET_NULL)
     name=models.CharField(max_length=254)
     description=models.TextField()
