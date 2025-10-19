@@ -17,7 +17,7 @@ class Category(models.Model):
         return self.friendly_name
 class Product(models.Model):
     category=models.ForeignKey('Category',null=True,blank=True,on_delete=models.SET_NULL)
-    name=models.CharField(max_length=254, min_length=1)
+    name=models.CharField(max_length=254)
     description=models.TextField()
     dimensions=models.CharField(max_length=254)
     material=models.CharField(max_length=254)
