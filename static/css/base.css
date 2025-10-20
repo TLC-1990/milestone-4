@@ -7,7 +7,7 @@ body {
     background-size: cover;*/
     height: calc(100vh - 164px);
     color: bisque;
-    font-family: "Tangerine", cursive;
+    font-family: "Cormorant Upright", serif;
     font-size: 1.2rem;
 }
 
@@ -45,6 +45,7 @@ body {
 
 .main-logo-link {
     width: fit-content;
+    font-family: "Tangerine", cursive;
 }
 
 #topnav {
