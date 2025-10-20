@@ -1,0 +1,135 @@
+html {
+    height: 100%;
+}
+
+body {
+    /*background: url('/media/homepage_gallery_image.JPG') no-repeat center center fixed;
+    background-size: cover;*/
+    height: calc(100vh - 164px);
+    color: bisque;
+    font-family: "Tangerine", cursive;
+    font-size: 1.2rem;
+}
+
+
+.homepage-text {
+    display: block;
+    margin: 0 0 16px 0;
+    flex-direction: column;
+    align-items: center;
+}
+
+.colour-block {
+    background-color: #86c295;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 33.33vh;
+    display: flex;
+    z-index: 2;
+    border-top: 5px solid bisque;
+    opacity: 0.9;
+    padding-right: 0;
+}
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+#topnav {
+    background-color: bisque !important;
+    border-bottom: 5px solid #86c295 !important;
+}
+
+.navbar.navbar-light {
+    background-color: bisque !important;
+    border-bottom: 1.5px solid #86c295 !important;
+}
+
+.enter-shop-button {
+    background: pink;
+    color: black;
+    min-width: 260px;
+}
+
+.enter-shop-button:hover,
+.enter-shop-button:active,
+.enter-shop-button:focus {
+    background: lightskyblue;
+    color: green;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.border-black {
+    border: 1px solid black !important;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: rgb(213, 243, 215);
+    z-index: -1;
+}
+
+.detail {
+    font-size: 1.2rem !important;
+}
+
+
+/* Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    body {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        max-width: 80%;
+    }
+
+}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    body {
+        font-size: 1.25rem;
+    }
+
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
+
+@media (max-width: 991px) {
+
+
+    body {
+        padding-top: 164px;
+    }
+}

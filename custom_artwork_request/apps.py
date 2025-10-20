@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CustomartworkrequestConfig(AppConfig):
+class CustomArtworkRequestConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "CustomArtworkRequest"
+    name = "custom_artwork_request"
