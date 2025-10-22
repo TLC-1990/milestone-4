@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>My Profile</h2>
+<h3>Previous Purchases</h3>
+<ul>
+    {% for order in orders %}
+    <li>Order #{{ order.id }} - {{ order.status }}</li>
+    {% empty %}
+    <li>No purchases yet.</li>
+    {% endfor %}
+</ul>
+<h3>Custom Artwork Requests</h3>
+<ul>
+    {% for req in custom_requests %}
+    <li>{{ req.category }} - {{ req.status }}</li>
+    {% empty %}
+    <li>No custom requests yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

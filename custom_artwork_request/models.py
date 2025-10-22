@@ -11,7 +11,7 @@ class CustomArtworkRequest(models.Model):
     CATEGORY_CHOICES = [
         ('portrait', 'Portrait'),
         ('landscape', 'Landscape'),
-        ('abstract', 'Abstract'),
+        ('animals', 'Animals'),
         ('still_life', 'Still Life'),
     ]
     SIZE_CHOICES =[
