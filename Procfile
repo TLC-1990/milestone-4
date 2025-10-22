@@ -1,0 +1,1 @@
+web: gunicorn jlc_art_ecommerce.wsgi
