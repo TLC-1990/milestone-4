@@ -1,3 +1,4 @@
+""""URL configuration for custom artwork request app."""
 from django.urls import path
 from . import views
 

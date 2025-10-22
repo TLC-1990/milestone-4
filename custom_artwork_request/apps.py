@@ -1,3 +1,4 @@
+"""App configuration for custom artwork request app."""
 from django.apps import AppConfig
 
 

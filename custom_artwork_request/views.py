@@ -1,9 +1,8 @@
+"""Views for custom artwork requests."""
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import CustomArtworkRequest
 from .forms import CustomArtworkRequestForm
-
-# Create your views here.
 
 @login_required
 def custom_artwork_request(request):
