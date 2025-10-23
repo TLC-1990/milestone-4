@@ -5,4 +5,4 @@ from .models import CustomArtworkRequest
 class CustomArtworkRequestForm(forms.ModelForm):
     class Meta:
         model = CustomArtworkRequest
-        fields = ['category', 'description', 'size', 'material', 'surface']
+        fields = ['category', 'description', 'size', 'material', 'surface', 'reference_image']

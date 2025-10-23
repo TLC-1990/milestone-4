@@ -11,7 +11,7 @@ def custom_artwork_request(request):
         login_form = LoginForm()
         return render(request, 'custom_artwork_request/custom_artwork_request.html', {'login_form': login_form})
     if request.method == 'POST':
-        form = CustomArtworkRequestForm(request.POST)
+        form = CustomArtworkRequestForm(request.POST, request.FILES)
         if form.is_valid():
             custom_request = form.save(commit=False)
             custom_request.user = request.user

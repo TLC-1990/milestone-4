@@ -58,15 +58,17 @@
             <div class="col-12 col-lg-6 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item">
-                        <a class="text-black nav-link" href="{% url 'artist_biography' %}">
+                        <a class="text-black nav-link {% if request.resolver_match.url_name == 'products' %}active-link{% endif %}"
+                            href="{% url 'artist_biography' %}">
                             <div class="text-center">
                                 <p class="my-0"> Artist Biography </p>
                             </div>
                         </a>
                     </li>
                     <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <a class="text-black nav-link {% if request.resolver_match.url_name == 'products' %}active-link{% endif %}"
+                            href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
                                 <p class="my-0">Account & Orders</p>

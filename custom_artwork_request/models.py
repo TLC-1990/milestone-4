@@ -46,9 +46,11 @@ class CustomArtworkRequest(models.Model):
     size = models.CharField(max_length=20, choices=SIZE_CHOICES)
     material = models.CharField(max_length=20, choices=MATERIAL_CHOICES)
     surface = models.CharField(max_length=20, choices=SURFACE_CHOICES)
+
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='under_consideration')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    reference_image = models.ImageField(upload_to='custom_artwork_references/', blank=True, null=True)
 
     def __str__(self):
         return f"Custom Artwork Request by {self.user.username} - {self.category} ({self.status})"
