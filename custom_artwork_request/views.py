@@ -1,12 +1,15 @@
 """Views for custom artwork requests."""
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from allauth.account.forms import LoginForm
 from .models import CustomArtworkRequest
 from .forms import CustomArtworkRequestForm
 
-@login_required
 def custom_artwork_request(request):
     """ A view to handle custom artwork requests """
+    if not request.user.is_authenticated:
+        login_form = LoginForm()
+        return render(request, 'custom_artwork_request/custom_artwork_request.html', {'login_form': login_form})
     if request.method == 'POST':
         form = CustomArtworkRequestForm(request.POST)
         if form.is_valid():
@@ -14,9 +17,9 @@ def custom_artwork_request(request):
             custom_request.user = request.user
             custom_request.save()
             return redirect('request_success')
-        else: 
-            form = CustomArtworkRequestForm()
-            return render(request, 'custom_artwork_request/custom_artwork_request_form.html', {'form': form})
+    else:
+        form = CustomArtworkRequestForm()
+    return render(request, 'custom_artwork_request/custom_artwork_request.html', {'form': form})
 
 @login_required
 def my_requests(request):

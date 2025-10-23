@@ -1,20 +1,38 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
-<div class="container mt-5">
-    <h2>Request a Custom Artwork</h2>
-    {% if not user.is_authenticated and login_form %}
-    <h3>Please log in to submit a request</h3>
-    <form method="post" action="{% url 'account_login' %}">
-        {% csrf_token %}
-        {{ login_form.as_p }}
-        <button type="submit" class="btn btn-primary">Log in</button>
-    </form>
-    {% else %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit Request</button>
-    </form>
-    {% endif %}
+
+<div class="overlay"></div>
+<div class="header-container container-fluid mt-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="text-black">Request a Custom Artwork</h2>
+            <hr>
+        </div>
+    </div>
 </div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            {% if not user.is_authenticated and login_form %}
+            <h3 class="text-black">Please log in to submit a request</h3>
+            <form class="text-black" method="post" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ login_form.as_p }}
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </form>
+        </div>
+        <div class="col-12 text-center">
+            {% else %}
+            <form class="text-black" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit Request</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
 {% endblock %}
