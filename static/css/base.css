@@ -3,8 +3,8 @@ html {
 }
 
 body {
-    /*background: url('/media/homepage_gallery_image.JPG') no-repeat center center fixed;
-    background-size: cover;*/
+    background: url('img/homepage_gallery_image.webp') no-repeat center center fixed;
+    background-size: cover;
     height: calc(100vh - 164px);
     color: bisque;
     font-family: "Cormorant Upright", serif;
