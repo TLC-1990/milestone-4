@@ -69,7 +69,6 @@ body {
 
 .list-inline {
     flex-wrap: nowrap !important;
-    overflow-x: auto !important;
 }
 
 .navbar.navbar-light {
