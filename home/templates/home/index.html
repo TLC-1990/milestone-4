@@ -14,20 +14,24 @@
 {% block content %}
 <div class="container-fluid colour-block">
     <div class="row h-100 w-100">
-        <div class="col-12 pb-5 d-flex justify-content-center align-items-center h-100 homepage-text">
-            <h2 class="logo-font display-4 text-black pt-5">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <h2 class="logo-font text-black pt-5 homepage-text home-title">
                 A world of colour awaits!
             </h2>
-            <h3 class="logo-font text-black text-center"> Say goodbye to boring walls with a host of original artworks
+        </div>
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <h3 class="logo-font text-black text-center homepage-text"> Say goodbye to boring walls with a host of
+                original artworks
                 created in
                 the heart of Wiltshire </h3>
-            <div class="my-3">
-                <h4>
-                    <a href="{% url 'products' %}" class="enter-shop-button btn btn-lg border-black rounded-1 py-2">
-                        Enter here </a>
-                </h4>
-            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center align-items-center my-3">
+            <h4 class="text-center">
+                <a href="{% url 'products' %}" class="enter-shop-button btn btn-lg border-black rounded-1 py-2">
+                    Enter here </a>
+            </h4>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}
