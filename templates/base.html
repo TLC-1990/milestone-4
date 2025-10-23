@@ -5,11 +5,14 @@
 
 <head>
 
+
     {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
+
+    <link rel="icon" href="{% static 'icon/art-easel-icon.ico' %}">
 
     {% block extra_meta %}
     {% endblock %}
@@ -55,7 +58,7 @@
             <div class="col-12 col-lg-6 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item">
-                        <a class="text-black nav-link" href="">
+                        <a class="text-black nav-link" href="{% url 'artist_biography' %}">
                             <div class="text-center">
                                 <p class="my-0"> Artist Biography </p>
                             </div>
