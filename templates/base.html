@@ -80,6 +80,7 @@
                             <a href="" class="dropdown-item"> Add new artworks to store </a>
                             {% endif %}
                             <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            <a href="{%url 'profile' %}" class="dropdown-item"> My Profile and Requests </a>
                             {% else %}
                             <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
                             <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
