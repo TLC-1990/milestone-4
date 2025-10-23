@@ -28,8 +28,6 @@
             <form class="text-black" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <label for="id_reference_image" class="mt-2">Upload a reference image (optional):</label>
-                {{ form.reference_image }}
                 <button type="submit" class="btn btn-primary mt-2">Submit Request</button>
             </form>
             {% endif %}
