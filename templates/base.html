@@ -58,15 +58,16 @@
             <div class="col-12 col-lg-6 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item">
-                        <a class="text-black nav-link {% if request.resolver_match.url_name == 'products' %}active-link{% endif %}"
+                        <a class="text-black nav-link {% if request.resolver_match.url_name == 'artist_biography' %}active-link{% endif %}"
                             href="{% url 'artist_biography' %}">
                             <div class="text-center">
+                                <div><i class="fa-solid fa-lg fa-paintbrush"></i></div>
                                 <p class="my-0"> Artist Biography </p>
                             </div>
                         </a>
                     </li>
                     <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link {% if request.resolver_match.url_name == 'products' %}active-link{% endif %}"
+                        <a class="text-black nav-link {% if request.resolver_match.url_name == 'profiles' %}active-link{% endif %}"
                             href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <div class="text-center">
@@ -79,8 +80,8 @@
                             {% if request.user.is_superuser %}
                             <a href="" class="dropdown-item"> Add new artworks to store </a>
                             {% endif %}
-                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             <a href="{%url 'profiles' %}" class="dropdown-item"> My Profile and Requests </a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}
                             <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
                             <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
