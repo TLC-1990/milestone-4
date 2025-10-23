@@ -69,6 +69,12 @@ body {
     border-bottom: 1.5px solid #86c295 !important;
 }
 
+.active-link {
+    font-weight: bold;
+    color: yellow !important;
+    text-shadow: darkgreen 1px 1px 2px;
+}
+
 .enter-shop-button {
     background: pink;
     color: black;
