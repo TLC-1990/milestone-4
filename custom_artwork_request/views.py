@@ -21,6 +21,9 @@ def custom_artwork_request(request):
         form = CustomArtworkRequestForm()
     return render(request, 'custom_artwork_request/custom_artwork_request.html', {'form': form})
 
+def request_submission_success(request):
+    return render(request, 'custom_artwork_request/request_submission_success.html')
+
 @login_required
 def my_requests(request):
     """
