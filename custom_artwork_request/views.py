@@ -16,7 +16,7 @@ def custom_artwork_request(request):
             custom_request = form.save(commit=False)
             custom_request.user = request.user
             custom_request.save()
-            return redirect('request_success')
+            return redirect('request_submission_success')
     else:
         form = CustomArtworkRequestForm()
     return render(request, 'custom_artwork_request/custom_artwork_request.html', {'form': form})

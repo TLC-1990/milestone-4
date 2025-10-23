@@ -50,7 +50,7 @@ class CustomArtworkRequest(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='under_consideration')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    reference_image = models.ImageField(upload_to='custom_artwork_references/', blank=True, null=True, label="Upload a reference image (optional):")
+    reference_image = models.ImageField(upload_to='custom_artwork_references/', blank=True, null=True)
 
     def __str__(self):
         return f"Custom Artwork Request by {self.user.username} - {self.category} ({self.status})"
