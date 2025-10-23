@@ -110,6 +110,10 @@ body {
     font-size: 1.2rem !important;
 }
 
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
 
 /* Media Queries */
 
