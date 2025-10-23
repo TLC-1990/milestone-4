@@ -1,11 +1,11 @@
-{% extends base.html %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block page_header %}
 <div class="container-fluid header-container">
     <div class="row">
-        <div class="col">
-            <h1 class="logo-font text-black pt-5">Artist Biography</h1>
+        <div class="col-lg-6 col-sm-12 text-center">
+            <h1 class="logo-font text-black pt-5 display-4">Artist Biography</h1>
         </div>
     </div>
 </div>
@@ -14,15 +14,21 @@
 {% block content %}
 <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <img src="{% static 'img/artist-photo.jpg' %}" alt="Artist Photo" class="img-fluid rounded mb-4">
-            <p class="lead">Jane L.C. is a contemporary artist based in Wiltshire, known for her vibrant use of colour
+        <div class="col-md-6">
+            <img src="{% static 'img/artist_photo.webp' %}" alt="photo of the artist standing in front of a window"
+                class="img-fluid rounded mb-4">
+        </div>
+        <div class="col-md-6">
+            <p class="lead text-black">Jane L.C. is a contemporary artist based in Wiltshire, known for her vibrant use
+                of colour
                 and expressive brushwork. Her work spans portraiture, landscapes, and custom commissions, each piece
                 reflecting her passion for creativity and originality.</p>
-            <p>Jane's journey began in childhood, inspired by the beauty of the English countryside. Over the years, she
+            <p class="text-black">Jane's journey began in childhood, inspired by the beauty of the English countryside.
+                Over the years, she
                 has developed a unique style that blends traditional techniques with modern flair. Her studio is a hub
                 of artistic exploration, welcoming clients seeking bespoke artwork for their homes and businesses.</p>
-            <p>Contact Jane for commissions, collaborations, or to learn more about her artistic process.</p>
+            <p class="text-black">Contact Jane for commissions, collaborations, or to learn more about her artistic
+                process.</p>
         </div>
     </div>
 </div>

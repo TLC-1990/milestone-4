@@ -7,7 +7,6 @@ from .forms import CustomArtworkRequestForm
 @login_required
 def custom_artwork_request(request):
     """ A view to handle custom artwork requests """
-
     if request.method == 'POST':
         form = CustomArtworkRequestForm(request.POST)
         if form.is_valid():
