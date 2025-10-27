@@ -19,11 +19,12 @@ class CustomArtworkRequest(models.Model):
         ('large', 'Large'),
         ('extra_large', 'Extra Large'),
     ]
-    MATERIAL_CHOICES = [
+    MEDIUM_CHOICES = [
         ('acrylics', 'Acrylics'),
-        ('mixed_media', 'Mixed Media'),
+        ('artists_choice', "Artist's Choice"),
         ('oil_paints', 'Oil Paints'),
         ('oil_pastels', 'Oil Pastels'),
+        ('chalk_pastels', 'Chalk Pastels'),
         ('pencil', 'Pencil'),
         ('watercolors', 'Watercolors'),
     ]
@@ -41,11 +42,11 @@ class CustomArtworkRequest(models.Model):
     ]
         
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
-    description = models.TextField()
-    size = models.CharField(max_length=20, choices=SIZE_CHOICES)
-    material = models.CharField(max_length=20, choices=MATERIAL_CHOICES)
-    surface = models.CharField(max_length=20, choices=SURFACE_CHOICES)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='portrait')
+    description = models.TextField(required=True)
+    size = models.CharField(max_length=20, choices=SIZE_CHOICES, default='small')
+    medium = models.CharField(max_length=20, choices=MEDIUM_CHOICES, default='artists_choice')
+    surface = models.CharField(max_length=20, choices=SURFACE_CHOICES, default='canvas')
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='under_consideration')
     created_at = models.DateTimeField(auto_now_add=True)

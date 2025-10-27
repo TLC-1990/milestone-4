@@ -23,13 +23,62 @@
                 <button type="submit" class="btn btn-primary">Log in</button>
             </form>
         </div>
+        {% else %}
     </div>
 </div>
-{% else %}
-<div class="container-fluid mt-4 w-100">
+<div class="container-fluid mt-4">
     <div class="row">
         <div class="col-12 col-md-4">
-            <h3 class="text-black"> Here will be a range of artwork and material styles </h3>
+            <h3 class="text-black"> Medium Examples</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="text-black">Medium</th>
+                        <th class="text-black">Description</th>
+                        <th class="text-black">Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-black">Acrylic Paint</td>
+                        <td class="text-black"> A bright and vibrant medium that dries quickly.</td>
+                        <td><img src="{% static 'img/acrylic_backgroundremoved.png' %}" alt="Acrylic Paint Example"
+                                class="img-fluid"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-black">Oil Paint</td>
+                        <td class="text-black"> A rich and textured medium that allows for blending and layering.</td>
+                        <td><img src="{% static 'img/oil_backgroundremoved.png' %}" alt="Oil Paint Example"
+                                class="img-fluid"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-black">Watercolor</td>
+                        <td class="text-black"> A fluid and transparent medium that creates soft washes of color.</td>
+                        <td><img src="{% static 'img/watercolour_backgroundremoved.png' %}" alt="Watercolor Example"
+                                class="img-fluid"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-black">Pencil</td>
+                        <td class="text-black"> A precise and detailed medium for sketching and shading.</td>
+                        <td><img src="{% static 'img/pencil_backgroundremoved.png' %}" alt="Pencil Example"
+                                class="img-fluid"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-black">Chalk Pastels</td>
+                        <td class="text-black"> A soft and blendable medium for vibrant colors and textures.</td>
+                        <td><img src="{% static 'img/chalk_pastels_backgroundremoved.png' %}" alt="Chalk Pastel Example"
+                                class="img-fluid"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-black">Oil Pastels</td>
+                        <td class="text-black"> A creamy and intense medium for bold colors and expressive marks.</td>
+                        <td><img src="{% static 'img/oil_pastel_backgroundremoved.png' %}" alt="Oil Pastel Example"
+                                class="img-fluid"></td>
+                    </tr>
+                </tbody>
+
+
+            </table>
         </div>
         <div class="col-12 col-md-4">
             <form class="text-black" method="post" enctype="multipart/form-data">
