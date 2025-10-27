@@ -43,7 +43,7 @@ class CustomArtworkRequest(models.Model):
         
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='portrait')
-    description = models.TextField(required=True)
+    description = models.TextField(max_length=500)
     size = models.CharField(max_length=20, choices=SIZE_CHOICES, default='small')
     medium = models.CharField(max_length=20, choices=MEDIUM_CHOICES, default='artists_choice')
     surface = models.CharField(max_length=20, choices=SURFACE_CHOICES, default='canvas')
