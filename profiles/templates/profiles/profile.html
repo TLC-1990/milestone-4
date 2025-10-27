@@ -23,25 +23,30 @@
         <div class="text-black col-sm-12 col-md-6">
             <h3 class="text-center">Custom Artwork Requests</h3>
             <ol>
-                {% for req in user_requests %}
+                <li>
+                    <ul>
+                        {% for req in user_requests %}
 
-                <li><strong> Category: </strong>{{ req.get_category_display }} </li>
-                <li><strong> Provided description: </strong>{{ req.description }}</li>
-                <li><strong> Requested size: </strong>{{ req.get_size_display }}</li>
-                <li><strong> Requested medium: </strong>{{ req.get_medium_display }}</li>
-                <li><strong> Requested surface: </strong>{{ req.get_surface_display }}</li>
+                        <li><strong> Category: </strong>{{ req.get_category_display }} </li>
+                        <li><strong> Provided description: </strong>{{ req.description }}</li>
+                        <li><strong> Requested size: </strong>{{ req.get_size_display }}</li>
+                        <li><strong> Requested medium: </strong>{{ req.get_medium_display }}</li>
+                        <li><strong> Requested surface: </strong>{{ req.get_surface_display }}</li>
 
-                <li><strong> Reference image (uploaded): </strong>
-                    {% if req.reference_image %}
-                    <img src="{{ req.reference_image.url }}" alt="User uploaded reference image" class="uploaded-image">
-                    {% else %}
-                    <span>No image uploaded</span>
-                    {% endif %}</li>
+                        <li><strong> Reference image (uploaded): </strong>
+                            {% if req.reference_image %}
+                            <img src="{{ req.reference_image.url }}" alt="User uploaded reference image"
+                                class="uploaded-image">
+                            {% else %}
+                            <span>No image uploaded</span>
+                            {% endif %}</li>
 
-                <li><strong> Status: </strong>{{ req.get_status_display }}</li>
-                {% empty %}
-                <li>No custom requests yet.</li>
-                {% endfor %}
+                        <li><strong> Status: </strong>{{ req.get_status_display }}</li>
+                        {% empty %}
+                        <li>No custom requests yet.</li>
+                        {% endfor %}
+                    </ul>
+                </li>
             </ol>
         </div>
     </div>
