@@ -23,30 +23,42 @@
         <div class="text-black col-sm-12 col-md-6">
             <h3 class="text-center">Custom Artwork Requests</h3>
             <ol>
+                {% for req in user_requests %}
                 <li>
-                    <ul>
-                        {% for req in user_requests %}
-
-                        <li><strong> Category: </strong>{{ req.get_category_display }} </li>
-                        <li><strong> Provided description: </strong>{{ req.description }}</li>
-                        <li><strong> Requested size: </strong>{{ req.get_size_display }}</li>
-                        <li><strong> Requested medium: </strong>{{ req.get_medium_display }}</li>
-                        <li><strong> Requested surface: </strong>{{ req.get_surface_display }}</li>
-
-                        <li><strong> Reference image (uploaded): </strong>
-                            {% if req.reference_image %}
-                            <img src="{{ req.reference_image.url }}" alt="User uploaded reference image"
-                                class="uploaded-image">
-                            {% else %}
-                            <span>No image uploaded</span>
-                            {% endif %}</li>
-
-                        <li><strong> Status: </strong>{{ req.get_status_display }}</li>
-                        {% empty %}
-                        <li>No custom requests yet.</li>
-                        {% endfor %}
-                    </ul>
+                    <strong> Date of request: {{ req.created_at }}</strong></li><br>
+                <strong> Category: </strong>{{ req.get_category_display }} </li><br>
+                <strong> Provided description: </strong>{{ req.description }}</li><br>
+                <strong> Requested size: </strong>{{ req.get_size_display }}</li><br>
+                <strong> Requested medium: </strong>{{ req.get_medium_display }}</li><br>
+                <strong> Requested surface: </strong>{{ req.get_surface_display }}</li><br>
+                <strong> Reference image (uploaded): </strong>
+                {% if req.reference_image %}
+                <img src="{{ req.reference_image.url }}" alt="User uploaded reference image" class="uploaded-image">
+                {% else %}
+                <span>No image uploaded</span>
+                {% endif %}
+                <br>
+                <strong>Status:
+                    {% if req.status == "under_consideration" %}
+                    <button class="btn-danger btn-outline m-2">Under Consideration</button>
+                    {% elif req.status == "in_progress" %}
+                    <button class="btn-warning btn-outline m-2">In Progress</button>
+                    {% elif req.status == "completed" %}
+                    <button class="btn-success btn-outline m-2">Completed</button>
+                    {% elif req.status == "delivered" %}
+                    <button class="btn-info btn-outline m-2">Delivered</button>
+                    {% else %}
+                    <span>{{ req.get_status_display }}</span>
+                    {% endif %}
+                </strong>
+                {% if req.status == "in_progress" %}
+                <br><strong> Please contact me for deposit amount and timeline at JaneLCArt@gmail.com or
+                    555-1234</strong><br>
                 </li>
+                {% endif %}
+                {% empty %}
+                <li>No custom requests yet.</li>
+                {% endfor %}
             </ol>
         </div>
     </div>
