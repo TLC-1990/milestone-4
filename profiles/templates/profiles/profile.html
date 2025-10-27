@@ -30,8 +30,14 @@
                 <li><strong> Requested size: </strong>{{ req.get_size_display }}</li>
                 <li><strong> Requested medium: </strong>{{ req.get_medium_display }}</li>
                 <li><strong> Requested surface: </strong>{{ req.get_surface_display }}</li>
-                <li><strong> Reference image (uploaded): </strong><img src="{{ req.reference_image.url }}"
-                        alt="User uploaded reference image" class="uploaded-image"></li>
+
+                <li><strong> Reference image (uploaded): </strong>
+                    {% if req.reference_image %}
+                    <img src="{{ req.reference_image.url }}" alt="User uploaded reference image" class="uploaded-image">
+                    {% else %}
+                    <span>No image uploaded</span>
+                    {% endif %}</li>
+
                 <li><strong> Status: </strong>{{ req.get_status_display }}</li>
                 {% empty %}
                 <li>No custom requests yet.</li>
