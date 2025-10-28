@@ -18,13 +18,12 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Subject
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
+            <div class="dropdown-menu border-0" aria-labelledby="artwork-link">
                 <a href="{% url 'products' %}?category=animals" class="dropdown-item">Animals</a>
                 <a href="{% url 'products' %}?category=portraits" class="dropdown-item">Portraits</a>
                 <a href="{% url 'products' %}?category=landscapes" class="dropdown-item">Landscapes</a>
                 <a href="{% url 'products' %}?category=still_life" class="dropdown-item">Still Life</a>
-                <a href="{% url 'products' %}?category=animals, portraits, landscapes, still_life"
-                    class="dropdown-item">All Artworks</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Artworks</a>
             </div>
         </li>
 
