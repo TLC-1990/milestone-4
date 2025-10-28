@@ -14,6 +14,47 @@
 {% endblock %}
 
 {% block content %}
+<div class="container py-5">
+    {% if bag_items %}
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <h2 class="text-black">Your Shopping Bag</h2>
+            <p class="text-black">Review your selected artworks below:</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Artwork</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in bag_items %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>£{{ item.product.price }}</td>
+                        <td>£{{ item.total_price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-right">
+                <h4 class="text-black">Grand Total: £{{ grand_total }}</h4>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <h2 class="text-black">Your bag is currently empty.</h2>
+            <p class="text-black">Browse our <a href="{% url 'products' %}">artworks</a> to add some colour to your
+                walls!</p>
+        </div>
+    </div>
+    {% endif  %}
+</div>
 
 
 {% endblock %}
