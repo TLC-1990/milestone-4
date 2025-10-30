@@ -23,7 +23,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">Artwork</th>
+                        <th scope="col">Artwork Title</th>
                         <th scope="col">Artwork Image</th>
                         <th scope="col">Price</th>
                         <th scope="col">Total</th>
@@ -33,9 +33,9 @@
                     {% for item in bag_items %}
                     <tr>
                         <td>{{ item.product.name }}</td>
-                        <td><img src="{{ item.product.}}" alt="{{ item.product.name }}" class="img-fluid" />
+                        <td><img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
+                                class="img-fluid bag-image">
                         </td>
-                        <td>£{{ item.product.price }}</td>
                         <td>£{{ item.product.price }}</td>
                         <td>£{{ item.total_price }}</td>
                     </tr>
@@ -43,7 +43,9 @@
                 </tbody>
             </table>
             <div class="text-right">
-                <h4 class="text-black">Grand Total: £{{ grand_total }}</h4>
+                <h3 class="text-black">Products Subtotal: £{{ total }}</h3>
+                <h3 class="text-black">Courrier Delivery (25% of Subtotal): £{{ delivery|floatformat:2 }}</h3>
+                <h4 class="text-black">Grand Total: £{{ grand_total|floatformat:2 }}</h4>
             </div>
         </div>
     </div>

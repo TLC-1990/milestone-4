@@ -129,6 +129,7 @@ ul {
     padding-left: 0;
 }
 
+.bag-image,
 .uploaded-image {
     max-width: 300px;
     height: 300px;
