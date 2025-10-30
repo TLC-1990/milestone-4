@@ -12,13 +12,18 @@ def bag_contents(request):
     bag = request.session.get('bag', {})
     
     for item_id in bag:
-        product = get_object_or_404(Product, pk=item_id)
-        total += product.price
-        product_count += 1
-        bag_items.append({
-           'item_id': item_id,
-         'product': product,
+        try:
+            product = get_object_or_404(Product, pk=item_id)
+            total += product.price
+            product_count += 1
+            bag_items.append({
+               'item_id': item_id,
+               'product': product,
        })
+        except Product.DoesNotExist:
+            del bag[item_id]
+            request.session['bag'] = bag
+            continue
         
     delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
     grand_total = delivery + total
