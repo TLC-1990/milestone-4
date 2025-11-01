@@ -45,6 +45,14 @@
             <div class="text-right">
                 <h3 class="text-black">Products Subtotal: £{{ total }}</h3>
                 <h3 class="text-black">Courrier Delivery (25% of Subtotal): £{{ delivery|floatformat:2 }}</h3>
+                <form method="post" action="{% url 'set_collection_option' %}">
+                    {% csrf_token %}
+                    <label class="text-black">
+                        <input type="checkbox" name="local_collection" {% if local_collection %}checked{% endif %}>
+                        I will collect locally (Please uncheck if you require delivery)
+                    </label>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
                 <h4 class="text-black">Grand Total: £{{ grand_total|floatformat:2 }}</h4>
             </div>
         </div>

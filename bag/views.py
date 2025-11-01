@@ -15,3 +15,13 @@ def add_to_bag(request, item_id):
     request.session['bag'] = bag
     
     return redirect(redirect_url)
+
+def set_collection_option(request):
+    """
+    A view to set the local collection option in the 
+    checkout process and remove shipping cost.
+    """
+    
+    if request.method == 'POST':
+        request.session['local_collection'] = 'local_collection' in request.POST
+    return redirect('view_bag')
