@@ -20,24 +20,24 @@
         <div class="col-12 text-center">
             <h2 class="text-black">Your Shopping Bag</h2>
             <p class="text-black">Review your selected artworks below:</p>
-            <table class="table table-bordered">
+            <table class="table table-bordered" border="2">
                 <thead>
                     <tr>
+                        <th scope="col">Item #</th>
                         <th scope="col">Artwork Title</th>
                         <th scope="col">Artwork Image</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in bag_items %}
                     <tr>
-                        <td>{{ item.product.name }}</td>
+                        <td><strong>{{ forloop.counter }}</strong></td>
+                        <td><strong>{{ item.product.name }}</strong></td>
                         <td><img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
-                                class="img-fluid bag-image">
+                                class="img-fluid uploaded-image">
                         </td>
-                        <td>£{{ item.product.price }}</td>
-                        <td>£{{ item.total_price }}</td>
+                        <td><strong>£{{ item.product.price }}</strong></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -47,6 +47,20 @@
                 <h3 class="text-black">Courrier Delivery (25% of Subtotal): £{{ delivery|floatformat:2 }}</h3>
                 <h4 class="text-black">Grand Total: £{{ grand_total|floatformat:2 }}</h4>
             </div>
+        </div>
+        <div class="col-12 text-right mt-3">
+            <a href="{% url 'products' %}" class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Keep Shopping</span>
+            </a>
+            <a href="" class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black">
+                <span class="text-uppercase">Secure Checkout</span>
+                <span class="icon">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </a>
         </div>
     </div>
     {% else %}
