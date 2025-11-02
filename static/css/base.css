@@ -135,6 +135,12 @@ ul {
     margin-top: 10px;
 }
 
+.remove-item {
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 /* Media Queries */
 
 /* Slightly larger container on xl screens */
