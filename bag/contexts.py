@@ -29,7 +29,8 @@ def bag_contents(request):
     grand_total = delivery + total
     
     local_collection = request.session.get('local_collection', False)
-    delivery = 0 if local_collection else delivery
+    delivery = 0 if local_collection else total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+    grand_total = total + delivery
 
     context = {
         'bag_items': bag_items,

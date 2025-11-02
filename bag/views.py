@@ -24,4 +24,5 @@ def set_collection_option(request):
     
     if request.method == 'POST':
         request.session['local_collection'] = 'local_collection' in request.POST
+        
     return redirect('view_bag')

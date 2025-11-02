@@ -20,7 +20,7 @@
         <div class="col-12 text-center">
             <h2 class="text-black">Your Shopping Bag</h2>
             <p class="text-black">Review your selected artworks below:</p>
-            <table class="table table-bordered" border="2">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Item #</th>
@@ -49,9 +49,9 @@
                     {% csrf_token %}
                     <label class="text-black">
                         <input type="checkbox" name="local_collection" {% if local_collection %}checked{% endif %}>
-                        I will collect locally (Please uncheck if you require delivery)
+                        I will collect locally* (Please uncheck if you require delivery)
                     </label>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn-primary btn btn-sm border-black rounded-1">Update</button>
                 </form>
                 <h4 class="text-black">Grand Total: £{{ grand_total|floatformat:2 }}</h4>
             </div>
