@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, HttpResponse
 
 def view_bag(request):
     """A view to return the shopping bag page."""
@@ -16,6 +16,18 @@ def add_to_bag(request, item_id):
     
     return redirect(redirect_url)
 
+def remove_from_bag(request, item_id):
+    """A view to remove a specified product from the shopping bag."""
+    try:
+        bag = request.session.get('bag', {})
+
+        if item_id in bag:
+            del bag[item_id]
+            request.session['bag'] = bag
+        return redirect('view_bag')
+    except Exception as e:
+        return HttpResponse(status=500)
+    
 def set_collection_option(request):
     """
     A view to set the local collection option in the 
