@@ -140,6 +140,23 @@ ul {
     cursor: pointer;
 }
 
+.message-container {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 9999999999;
+}
+
+.custom-toast {
+    background-color: lightyellow;
+    font-weight: bold;
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
 /* Media Queries */
 
 /* Slightly larger container on xl screens */
