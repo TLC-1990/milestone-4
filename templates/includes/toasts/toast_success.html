@@ -8,6 +8,39 @@
         </button>
     </div>
     <div class="toast-body bg-white">
-        {{ message }}
+        <div class="row">
+            <div class="col">
+                {{ message }}
+                <hr class="mt-1 mb-3">
+            </div>
+        </div>
+        {% if grand_total %}
+        <p> Your bag ({{ bag_items|length }})</p>
+        {% for item in bag_items %}
+        <div class="row mb-2">
+            <div class="col-3 my-1">
+                <div class="img-thumbnail p-1 bg-light">
+                    <img src="{{ item.product.image.url }}" class="img-fluid" alt="{{ item.product.name }}">
+                </div>
+            </div>
+            <div class="col-9">
+                <p>{{ item.product.name }} - £{{ item.product.price }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="w-100">
+            <hr class="my-1">
+            <p class="font-weight-bold">Subtotal: £{{ total|floatformat:2 }}</p>
+        </div>
+        <div class="w-100">
+            <hr class="my-1">
+            <p class="font-weight-bold">Courrier Delivery (25% of Subtotal): £{{ delivery|floatformat:2 }} <br>
+                (Estimated delivery time: 3-5 business days)<br> FREE local collection also available!</p>
+        </div>
+        <div class="w-100">
+            <hr class="my-1">
+            <p class="font-weight-bold">Grand Total: £{{ grand_total|floatformat:2 }}</p>
+        </div>
     </div>
 </div>
