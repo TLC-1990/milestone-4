@@ -6,6 +6,8 @@ from django.conf import settings
 
 from products.models import Product
 
+COUNTRY_CHOICES = [('UK', 'United Kingdom')]
+
 class Order(models.Model):
     order_number = models.CharField(max_length=32, editable=False)
     date = models.DateTimeField(auto_now_add=True)
@@ -17,7 +19,7 @@ class Order(models.Model):
     town_or_city = models.CharField(max_length=40)
     street_address1 = models.CharField(max_length=80)
     street_address2 = models.CharField(max_length=80, blank=True)
-    county = models.CharField(max_length=80, blank=True)
+    county = models.CharField(max_length=80, blank=True, choices=COUNTRY_CHOICES, default='UK')
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2)
     order_total = models.DecimalField(max_digits=10, decimal_places=2)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2)
