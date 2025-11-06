@@ -135,6 +135,12 @@ ul {
     margin-top: 10px;
 }
 
+.checkout-image {
+    max-width: 150px;
+    height: 150px;
+    margin-top: 10px;
+}
+
 .remove-item {
     font-weight: bold;
     cursor: pointer;

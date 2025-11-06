@@ -3,6 +3,7 @@ certifi==2025.10.5
 cffi==1.17.1
 charset-normalizer==3.4.1
 cloudinary==1.44.1
+crispy-bootstrap4==2025.6
 cryptography==44.0.0
 defusedxml==0.7.1
 dj-database-url==3.0.1

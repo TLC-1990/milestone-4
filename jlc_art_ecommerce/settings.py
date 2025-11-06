@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
+    'crispy_bootstrap4',
     'cloudinary',
     'bag',
     'checkout',
@@ -58,6 +59,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'jlc_art_ecommerce.urls'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 
 TEMPLATES = [
     {
