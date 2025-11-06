@@ -1,0 +1,5 @@
+#payment-form .form-control,
+#card-element {
+    color: #495057;
+    border: 1px solid darkgreen;
+}
