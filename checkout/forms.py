@@ -2,6 +2,10 @@ from django import forms
 from .models import Order
 
 class OrderForm(forms.ModelForm):
+    COUNTRY_CHOICES = [('UK', 'United Kingdom')]
+
+    country = forms.ChoiceField(choices=COUNTRY_CHOICES, initial='UK')
+
     class Meta:
         model = Order
         fields = ['full_name', 'email', 'phone_number', 
@@ -25,13 +29,6 @@ class OrderForm(forms.ModelForm):
             'county': 'County',
         }
         
-        def clean(self):
-            cleaned_data = super().clean()
-            country = cleaned_data.get('country')
-            postcode = cleaned_data.get('postcode')
-            if country and country != 'UK':
-                self.add_error('country', 'Currently, we only ship to the United Kingdom.')
-        
         self.fields['full_name'].widget.attrs['autofocus'] = True
         
         for field in self.fields:
@@ -42,3 +39,13 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
+    
+    def clean(self):
+            cleaned_data = super().clean()
+            country = cleaned_data.get('country')
+            postcode = cleaned_data.get('postcode')
+            if country and country != 'UK':
+                self.add_error('country', 'Currently, we only ship to the United Kingdom.')
+    
+   
+   
