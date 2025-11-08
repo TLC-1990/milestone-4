@@ -105,4 +105,10 @@ def checkout_success(request, order_number):
     context = {
         'order': order,
     }
+    
+    for lineitem in order.lineitems.all():
+        product = lineitem.product
+        product.sold = True
+        product.save()
+    
     return render(request, template, context)

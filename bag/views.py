@@ -15,7 +15,7 @@ def add_to_bag(request, item_id):
 
     bag = request.session.get('bag', {})
     
-    if [item_id] in bag:
+    if item_id in bag:
         messages.info(request, f'{product.name} is already in your bag.')
     else:
         bag[item_id] =  1
