@@ -35,9 +35,9 @@
                 <li class="mb-1"><strong>Phone Number:</strong> {{ order.phone_number }}</li>
                 <br>
                 <h4 class="text-black">Shipping and Billing Details</h4>
-                <li class="mb-1"><strong>Address 1:</strong> {{ order.street_address1 }}</li>
+                <li class="mb-1"><strong>Street Address 1:</strong> {{ order.street_address1 }}</li>
                 {% if order.street_address2 %}
-                <li class="mb-1"><strong>Address 2:</strong> {{ order.street_address2 }}</li>
+                <li class="mb-1"><strong>Street Address 2:</strong> {{ order.street_address2 }}</li>
                 {% endif %}
                 <li class="mb-1"><strong>City:</strong> {{ order.town_or_city }}</li>
                 {% if order.county %}
@@ -46,10 +46,6 @@
                 <li class="mb-1"><strong>Postcode:</strong> {{ order.postcode }}</li>
                 <li class="mb-1"><strong>Country:</strong> {{ order.country }}</li>
             </ul>
-            <a href="{% url 'products' %}"
-                class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mt-5">
-                <span>Back to Products</span>
-            </a>
         </div>
         <div class="col-12 col-lg-6 order-lg-last mb-5">
             <p class="text-muted">Order Summary ({{ order.lineitems.count }})</p>
@@ -86,14 +82,29 @@
                     <p class="my-0">Order Total:</p>
                     <p class="my-0">Delivery:</p>
                     <p class="my-0">Grand Total:</p>
+                    <a href="{% url 'products' %}"
+                        class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mt-5">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span>Back to Products</span>
+                    </a>
                 </div>
                 <div class="col-3">
                     <p class="my-0">£{{ order.order_total | floatformat:2 }}</p>
                     <p class="my-0">£{{ order.delivery_cost | floatformat:2 }}</p>
                     <p class="my-0"><strong>£{{ order.grand_total | floatformat:2 }}</strong></p>
+                    <a href="{% url 'profiles' %}"
+                        class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mt-5">
+                        <span>Profile and Order History</span>
+                        <span class="icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}
