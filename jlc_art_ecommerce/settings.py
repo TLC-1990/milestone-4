@@ -85,6 +85,8 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 AUTHENTICATION_BACKENDS = [

@@ -2,10 +2,11 @@
 {% load static %}
 {% load i18n %}
 {% load account socialaccount %}
+{% crispy_forms_tags %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
-{% block content %}
+{% block inner_content %}
 
 <h1>{% trans "Sign In" %}</h1>
 

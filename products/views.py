@@ -6,7 +6,7 @@ from .models import Product, Category
 def all_products(request):
     """ A view to show all products, including sorting """
 
-    products = Product.objects.all()
+    products = Product.objects.filter(sold=False)
     categories = None
     
     if request.GET:
