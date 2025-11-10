@@ -5,10 +5,17 @@ from checkout.models import Order
 
 @login_required
 def profiles(request):
-    orders = Order.objects.filter(user_profile__user=request.user).order_by('-date')
-    user_requests = CustomArtworkRequest.objects.filter(user=request.user)
+    if request.user.is_superuser:
+        orders = Order.objects.all().order_by('-date')
+        user_requests = CustomArtworkRequest.objects.all()
+    else:
+        orders = Order.objects.filter(user_profile__user=request.user).order_by('-date')
+        user_requests = CustomArtworkRequest.objects.filter(user=request.user)
+    profile = request.user.userprofile
     context = {
         'orders': orders,
         'user_requests': user_requests,
+        'profile': profile,
     }
     return render(request, 'profiles/profile.html', context)
+

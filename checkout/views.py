@@ -61,6 +61,18 @@ def checkout(request):
             if request.user.is_authenticated:
                 profile, created = UserProfile.objects.get_or_create(user=request.user)
                 order.user_profile = profile
+                save_info = request.POST.get('save_info')
+                if save_info:
+                    profile.default_full_name = order.full_name
+                    profile.default_phone_number = order.phone_number
+                    profile.default_country = order.country
+                    profile.default_postcode = order.postcode
+                    profile.default_town_or_city = order.town_or_city
+                    profile.default_street_address1 = order.street_address1
+                    profile.default_street_address2 = order.street_address2
+                    profile.default_county = order.county
+                    profile.save()
+                
                 
                 
             order.save()

@@ -1,9 +1,7 @@
 from pathlib import Path
 import os
 import dj_database_url
-#import cloudinary
-#import cloudinary.uploader
-#import cloudinary.api
+
 
 if os.path.isfile('env.py'):
     import env
@@ -72,6 +70,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                'django.template.context_processors.media',
                 'django.template.context_processors.request', 
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
