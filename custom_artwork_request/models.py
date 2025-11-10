@@ -47,6 +47,9 @@ class CustomArtworkRequest(models.Model):
     size = models.CharField(max_length=20, choices=SIZE_CHOICES, default='small')
     medium = models.CharField(max_length=20, choices=MEDIUM_CHOICES, default='artists_choice')
     surface = models.CharField(max_length=20, choices=SURFACE_CHOICES, default='canvas')
+    name = models.CharField(max_length=100, blank=True)
+    email = models.EmailField(max_length=100, default='', blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='under_consideration')
     created_at = models.DateTimeField(auto_now_add=True)

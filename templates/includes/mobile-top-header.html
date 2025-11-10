@@ -1,8 +1,16 @@
 <li class="list-inline-item">
+    <a class="text-black nav-link d-block d-lg-none" href="{% url 'home' %}">
+        <div class="text-center">
+            <div><i class="fas fa-home fa-lg"></i></div>
+            <p class="my-0 d-none d-sm-block">Home</p>
+        </div>
+    </a>
+</li>
+<li class="list-inline-item">
     <a class="text-black nav-link d-block d-lg-none" href="{% url 'artist_biography' %}">
         <div class="text-center">
-            <div><i class="fa-solid fa-sm fa-paintbrush"></i></div>
-            <p class="my-0"> Artist Biography </p>
+            <div><i class="fa-solid fa-lg fa-paintbrush"></i></div>
+            <p class="my-0 d-none d-sm-block"> Artist Biography </p>
         </div>
     </a>
 </li>
@@ -10,8 +18,8 @@
     <a class="text-black nav-link d-block d-lg-none" href="#" id="user-options" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
-            <div><i class="fas fa-user fa-sm"></i></div>
-            <p class="my-0">My Account <br>
+            <div><i class="fas fa-user fa-lg"></i></div>
+            <p class="my-0 d-none d-sm-block">My Account <br>
                 and Orders</p>
         </div>
     </a>
@@ -32,7 +40,7 @@
     <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
         href="{% url 'view_bag' %}">
         <div class="text-center">
-            <div><i class="fas fa-shopping-bag fa-sm"></i></div>
+            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
             <p class="my-0">
                 {% if grand_total %}
                 ${{ grand_total|floatformat:2 }}

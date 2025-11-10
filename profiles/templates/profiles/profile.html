@@ -47,6 +47,9 @@
                 {% for req in user_requests %}
                 <li>
                     <strong> Date of request: {{ req.created_at }}</strong></li><br>
+                <strong> Name:</strong> {{ req.name }}</li><br>
+                <strong> Email:</strong> {{ req.email }}</li><br>
+                <strong> Phone Number:</strong> {{ req.phone_number }}</li><br>
                 <strong> Category: </strong>{{ req.get_category_display }} </li><br>
                 <strong> Provided description: </strong>{{ req.description }}</li><br>
                 <strong> Requested size: </strong>{{ req.get_size_display }}</li><br>
