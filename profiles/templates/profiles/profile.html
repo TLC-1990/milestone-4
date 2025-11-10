@@ -19,12 +19,35 @@
     </div>
     <div class="row">
         <div class="text-center text-black col-sm-12 col-lg-6">
+            {% if user.is_superuser %}
+            <h3>All Orders</h3>
+            {% else %}
             <h3>Previous Purchases</h3>
-            <ol>
+            {% endif %}
+            <ol class="mb-4 text-left">
                 {% for order in orders %}
                 <li>
                     Order #{{ order.order_number }} - £{{ order.grand_total }}
                     <ul>
+                        <li><strong>Name:</strong> {{ order.full_name }}</li>
+                        <li><strong>Phone:</strong> {{ order.phone_number }}</li>
+                        <li><strong>Email:</strong> {{ order.email }}</li>
+                        <li><strong>Address 1:</strong> {{ order.street_address1 }}</li>
+                        {% if order.street_address2 %}
+                        <li><strong>Address 2:</strong> {{ order.street_address2 }}</li>
+                        {% endif %}
+                        <li><strong>Town/City:</strong> {{ order.town_or_city }}</li>
+                        <li><strong>Postcode:</strong> {{ order.postcode }}</li>
+                        <li><strong>County:</strong> {{ order.county }}</li>
+                        <li><strong>Country:</strong> {{ order.country }}</li>
+                        <li><strong>Order Date:</strong> {{ order.date }}</li>
+                        <li><strong>Delivery Cost:</strong> {% if order.delivery_cost == 0 %}
+                            £0.00 (Collection)
+                            {% else %}
+                            £{{ order.delivery_cost }}
+                            {% endif %}</li>
+                    </ul>
+                    <ul class="mt-3 mb-3">
                         {% for item in order.lineitems.all %}
                         <li>{{ item.product.name }} (x{{ item.quantity }})</li>
                         <li>
