@@ -6,6 +6,7 @@ from django.conf import settings
 from .forms import OrderForm
 from .models import OrderLineItem, Order
 from products.models import Product
+from profiles.models import UserProfile
 from bag.contexts import bag_contents
 
 import stripe
@@ -26,7 +27,7 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-
+    
     
 def checkout(request):
     """ A view to return the checkout page """
@@ -56,6 +57,12 @@ def checkout(request):
             order.original_bag = str(bag)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
+            
+            if request.user.is_authenticated:
+                profile, created = UserProfile.objects.get_or_create(user=request.user)
+                order.user_profile = profile
+                
+                
             order.save()
             for item_id, item_data in bag.items():
                 try:

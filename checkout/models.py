@@ -5,6 +5,7 @@ from django.db.models import Sum
 from django.conf import settings
 
 from products.models import Product
+from profiles.models import UserProfile
 
 COUNTRY_CHOICES = [('UK', 'United Kingdom')]
 
@@ -25,6 +26,7 @@ class Order(models.Model):
     grand_total = models.DecimalField(max_digits=10, decimal_places=2)
     original_bag = models.TextField()
     stripe_pid = models.CharField(max_length=254)
+    user_profile = models.ForeignKey('profiles.UserProfile', on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
 
     def _generate_order_number(self):
         """Generate a random, unique order number using UUID"""

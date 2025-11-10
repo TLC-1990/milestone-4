@@ -27,5 +27,7 @@ requests==2.31.0
 requests-oauthlib==2.0.0
 six==1.17.0
 sqlparse==0.5.3
+stripe==13.2.0
+typing_extensions==4.15.0
 urllib3==1.26.20
 whitenoise==6.11.0
