@@ -16,10 +16,10 @@ def add_to_bag(request, item_id):
     bag = request.session.get('bag', {})
     
     if item_id in bag:
-        messages.info(request, f'{product.name} is already in your bag.')
+        messages.info(request, f'{product.name} is already in your bag.', extra_tags="bag")
     else:
         bag[item_id] =  1
-        messages.success(request, f'Added {product.name} to your bag.')
+        messages.success(request, f'Added {product.name} to your bag.', extra_tags="bag")
     request.session['bag'] = bag
     return redirect(redirect_url)
 
@@ -34,11 +34,11 @@ def remove_from_bag(request, item_id):
             del bag[item_id]
             request.session['bag'] = bag
             print(f"Removed {product.name} from bag")
-            messages.success(request, f'Removed {product.name} from your bag.')
+            messages.success(request, f'Removed {product.name} from your bag.', extra_tags="bag")
         return redirect('view_bag')
     
     except Exception as e:
-        messages.error(request, f'Error removing {product.name} from your bag.')
+        messages.error(request, f'Error removing {product.name} from your bag.', extra_tags="bag")
         return HttpResponse(status=500)
     
 def set_collection_option(request):
@@ -50,5 +50,5 @@ def set_collection_option(request):
     if request.method == 'POST':
         request.session['local_collection'] = 'local_collection' in request.POST
         print("success message set for collection option")
-        messages.success(request, f'You have selected to collect your order locally.')
+        messages.success(request, f'You have selected to collect your order locally.', extra_tags="bag")
     return redirect('view_bag')

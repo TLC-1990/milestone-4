@@ -95,12 +95,12 @@ def checkout(request):
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was an error with your form. Please double check your information.')
+            messages.error(request, 'There was an error with your form. Please double check your information.', extra_tags="checkout")
 
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "Your bag is empty at the moment")
+            messages.error(request, "Your bag is empty at the moment", extra_tags="checkout")
             return redirect(reverse('products'))
     
         current_bag = bag_contents(request)
@@ -135,7 +135,7 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+        email will be sent to {order.email}.', extra_tags="checkout")
     
     if 'bag' in request.session:
         del request.session['bag']
