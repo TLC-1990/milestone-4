@@ -1,22 +1,24 @@
 Hello {{ order.full_name }}
 
-This is confirmation of your order at Boutique Ado. Your order information is below:
+This is confirmation of your order from Jane L.C 's Online Studio. Your order information is below:
 
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
-Order Total: ${{ order.order_total }}
-Delivery: ${{ order.delivery_cost }}
-Grand Total: ${{ order.grand_total }}
+Order Total: £{{ order.order_total }}
+Delivery: £{{ order.delivery_cost }}
+Grand Total: £{{ order.grand_total }}
 
-Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+If courrier shipping was selected at checkout, your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
 
-We've got your phone number on file as {{ order.phone_number }}.
+If there are any issues or forseeable delays, I shall contact you at {{ order.phone_number }}.
 
-If you have any questions, feel free to contact us at {{ contact_email }}.
+If you have any questions, feel free to contact me at {{ contact_email }}.
 
-Thank you for your order! 
+Thank you so much for your order. I'm sure you'll love it! 
 
 Sincerely, 
 
-Boutique Ado
+Jane L.C. 
+
+P.S. Send a photograph of your new picture in-situ and I'll give you 25% off your next purchase! 
