@@ -95,7 +95,7 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 DEFAULT_FROM_EMAIL = 'JaneLCStudios@example.com'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
