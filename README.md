@@ -4,9 +4,9 @@
 <img src="development/images/responsiveness_mockup.webp">
 (via https://websitemockupgenerator.com/) 
 
-# Jane L.C online studio
+# Jane L.C Online Studio
 
-## URL: https://milestone-4-9edac19c3460.herokuapp.com/home
+## URL: https://milestone-4-9edac19c3460.herokuapp.com
 
 # Table of contents
 ## 1. [Project Overview](#project-overview)
@@ -35,18 +35,20 @@ __________________
 
 ## 1. Project Overview
 
-A responsive restaurant website built with Python and Django, featuring a reservation booking system, user registration, and a menu display. The project demonstrates full-stack development, including database design, form validation, and deployment to Heroku.
+A responsive e-commerce website for an artist to showcase and sell their artwork and services online. The site allows users to browse available artworks, filter by categories, add items to a shopping cart, make custom artwork requests and complete purchases through a secure checkout process. The site also includes user registration and authentication, order management (viewing for users and superusers), and an admin portal for managing products and orders.
+
+The superuser (the artist/website owner) is able to add, edit, and delete products, view all orders, and manage user accounts through the Django admin interface.
 
 ### Features
 
 - User registration and authentication
-- Table booking with date and time selection
-- Prevents double bookings and bookings in the past
-- Email confirmation for reservations
-- View, edit, and cancel bookings
+- Artwork listing with filtering options
+- Shopping cart and checkout process
+- Email confirmation for orders
+- View (user and superuser(owner)), edit(superuser), and cancel orders(superuser)
 - Responsive design for all devices
-- Menu and reviews page
-- Admin portal for managing bookings and users
+- Biography page about the artist
+- Admin portal for managing products, orders and requests.
 
 
 ## Criteria provided by Code Institute 

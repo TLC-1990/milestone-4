@@ -165,22 +165,12 @@ ul {
     height: 2px;
 }
 
+
+
 .product-image-container {
     width: 100%;
-    height: 300px;
-    /* or your desired height */
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.product-image-container img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-    background: #fff;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
