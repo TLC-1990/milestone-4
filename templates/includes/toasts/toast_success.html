@@ -27,8 +27,7 @@
                 <p>{{ item.product.name }} - £{{ item.product.price }}</p>
             </div>
         </div>
-        {% endfor %}
-        {% endif %}
+
         <div class="w-100">
             <hr class="my-1">
             <p class="font-weight-bold">Subtotal: £{{ total|floatformat:2 }}</p>
@@ -42,5 +41,7 @@
             <hr class="my-1">
             <p class="font-weight-bold">Grand Total: £{{ grand_total|floatformat:2 }}</p>
         </div>
+        {% endfor %}
+        {% endif %}
     </div>
 </div>

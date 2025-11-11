@@ -29,6 +29,7 @@
                 <li>
                     Order #{{ order.order_number }} - £{{ order.grand_total }}
                     <ul>
+                        {% if user.is_superuser %}
                         <li><strong>Name:</strong> {{ order.full_name }}</li>
                         <li><strong>Phone:</strong> {{ order.phone_number }}</li>
                         <li><strong>Email:</strong> {{ order.email }}</li>
@@ -40,6 +41,7 @@
                         <li><strong>Postcode:</strong> {{ order.postcode }}</li>
                         <li><strong>County:</strong> {{ order.county }}</li>
                         <li><strong>Country:</strong> {{ order.country }}</li>
+                        {% endif %}
                         <li><strong>Order Date:</strong> {{ order.date }}</li>
                         <li><strong>Delivery Cost:</strong> {% if order.delivery_cost == 0 %}
                             £0.00 (Collection)

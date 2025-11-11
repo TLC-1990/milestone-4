@@ -76,15 +76,17 @@
                                 <p class="my-0">Account & Orders</p>
                             </div>
                         </a>
-                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                        <div class="dropdown-menu dropdown-menu-right border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
-                            <a href="" class="dropdown-item"> Add new artworks to store </a>
-                            {% endif %}
-                            <a href="{%url 'profiles' %}" class="dropdown-item"> My Profile and Requests </a>
+                            <a href="{%url 'profiles' %}" class="dropdown-item"> View all current orders </a>
                             <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                            <a href="{%url 'profiles' %}" class="dropdown-item"> My Profile and Requests </a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            {% endif %}
+                            {% else %}
+                            <a href=" {% url 'account_signup' %}" class="dropdown-item">Register</a>
                             <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                             {% endif %}
                         </div>
