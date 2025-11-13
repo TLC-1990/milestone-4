@@ -54,77 +54,89 @@ The superuser (the artist/website owner) is able to add, edit, and delete produc
 ## Criteria provided by Code Institute 
  
 ### External user’s goal: 
-* The user would like to book one or more guests for a meal in a restaurant and
-a particular time and date.
+* The user would like to be able to view and purchase artworks from the artist online.
 
 ### Site owner's goal:
-* The site owner would like the ability to take online bookings for their eatery.
+* The site owner would like the artist to be able to showcase and sell their artworks and services online, manage orders and products easily, and provide a seamless shopping experience for users.
 
 ## 2. User stories
-* As a user, I want to be able to find out information about the restaurant, including location and menus.
-* As a user, I want the website to be simply presented and easily navigable. 
-* As a user, I want to be able to register and log-in to the booking system.
-* As a user, I want to be able to book a table online, providing extra information in a notes section if necessary, and recieve an email confirmation 
+* As a user, I want to be able to find out information about the artist, including their biography and available artworks.
+* As a user, I want to be able to view available artworks, filter them by categories (e.g., price, subject, size), and see details for each artwork.
+* As a user, I want to be able to add artworks to a shopping cart and proceed to checkout. Orders should be linked to my user account.
+* As a user, I want the website to be simply presented and easily navigable.
+* As a user, I want to be able to register and log-in to the website.
+* As a user, I want to be able to make a custom artwork request online, providing extra information in a notes section if necessary.
 
 ### Must-haves
 * User friendly navigation.
-* Restaurant information including an introduction and an example menu
-* A system through which a user can first register, log-in and then log-out. Any reservations made should then be linked to user.
-* User shouldn't be able to book an already booked table.
-* User shouldn't be able to book a table in the past. 
-* User should be able to check previous and future reservations.
+* User should be able to view available artworks and their details.
+* User should be able to add artworks to a shopping cart and complete a secure checkout process.
+* User should be able to register and log-in to the website.
+* User should be able to make a custom artwork request online.
+* Superuser (site owner) should be able to add, edit, and delete products (via Django admin).
 
 ### Should-haves
-* User should be able to see reviews from previous diners. 
-* Website should have an engaging visual design and clear branding
-* User should be able to cancel bookings independently
+* User should be able to filter artworks by categories (e.g., price, subject, size).
+* User should be able to view their order history.
+* User should recieve an email confirmation following a successful order.
+
 
 ### Could-haves
-* User could recieve a confirmation email following booking.  
-* User could send messages to the restaurant outside of the booking system notes area. 
+* User could be able to edit or cancel their orders.
+* Superuser could add and edit products via a custom admin panel on the site (not just via Django admin).
+* User could view a separate gallery of artwork images.
 
 ## 3. UX Design
 
 ### Strategy
-The aim of the project is to create a functional user registration and table booking app using Django and Python, with front end design from HTML, CSS and JS.
+The aim of the project is to create a functional user registration and e-commerce store using Django and Python, with front-end design from HTML, CSS and JS. 
 
-The user will be able to navigate the website and book a table for the restaurant. 
+The user will be able to navigate the website using a navbar at the top of the page. The site will be responsive and easy to use on mobile, tablet and desktop devices.
 
 ### Scope
-The project will consist of three main pages (Home, Menu/Reviews, Booking) as well as interim success/login pages.  
+The project will consist of seven main pages (Home, Products, Biography, Custom Artwork Request, Profile, Checkout and Bag) as well as interim success/login pages.  
 
-1. Homepage - Loading the page will bring the user to /home. Here there will be an introduction to the restaurant (The Wurst of Times) as well as links to book a table. A navbar at the top of the page will allow the user to navigate to other templates within the project.
-2. Menu and Reviews - This page will house an example menu as well as reviews from previous diners. 
-3. Book Your Table - This page will include a booking form with input and choice areas for customer name, table choice, reservation date, time slot, number of guests, additional notes for the restaurant and customer email. 
-4. My Bookings - A page on which a logged-in user can view upcoming bookings and previously made bookings. This page will include links to edit/cancel pages as well as a link to make a new booking. 
+1. Homepage - Loading the page will bring the user to https://milestone-4-9edac19c3460.herokuapp.com/.  A navbar at the top of the page will allow the user to navigate to other templates and apps within the project.
+2. Products - This page will show all available artworks for sale. Each artwork will have an image, title, price and short description. The user can click on an artwork to view more details.
+3. Artist Biography - This page will provide information about the artist, including their background, artistic style, and contact information.
+4. Custom Artwork Request - This page will include a form for users to submit custom artwork requests. The form will include fields for the user's name, email, artwork description, and any additional notes.
+5. Profile - This page will allow users to view their order history and manage their account details.
+6. Checkout - This page will allow users to review their shopping cart, enter shipping and payment information, and complete their purchase.
+7. Bag - This page will show the user's shopping cart, including the artworks they have added, quantities, and total price. Users can update quantities or remove items from their cart.
 
 #### Additional/Interim pages for functionality
 
-4. Sign Up - This page includes input areas for username, password and password confirmation. This page includes the rules provided by django.auth regaring username and password appropriateness. 
+4. Sign Up - This page includes input areas for username, password and password confirmation. This page includes the rules provided by django.allauth regarding username and password appropriateness. 
 5. Sign-in - A simple page through which a user can sign in using their credentials. If they are not already registered, there is a link to register. 
-6. Reservation Success - A simple interim page following a successful booking which links the user back to the home page. 
-7. Edit Booking - This page will pull a current booking details so a user can amend their booking (i.e. change time, date or add notes).
-8. Cancel Booking - This is a confirmation page to let the user know that they have successfully cancelled their booking. 
+6. Order Success - A simple interim page following a successful order which links the user back to the home page or to their profile to view their order history.
 
-Once created, bookings can be viewed and amended via /admin through the use of a superuser log-in. Registered user details can also be viewed within the /admin portal. 
+
+Once created, orders and custom artwork requests can be viewed and amended via /admin through the use of a superuser log-in. Registered user details can also be viewed within the /admin portal. The order model includes fields for user, order date, order total, and order items. The custom artwork request model includes fields for user, request date, artwork description, and additional notes.
+
+All orders and custom artwork requests can be viewed by the superuser in the /profile page when they are logged in with their site-owner/superuser credentials.
+
+The superuser can add, edit, and delete products via the Django admin interface as well as mark them as sold/unsold. A sold product will not appear on the products page for users to view or purchase.
+
+### Admin Order View
 <img src ="development/images/table_booking_in_admin.webp">
-
+ADD SCREENSHOTS OF ADMIN PANELS
 
 ### Structure
 (See wireframes section below)
 
 ### Skeleton
-The user will navigate by clicking the links in the navbar menu (visible in tablet view and on desktop, collapsed on mobile devices). Templates are linked sitewide by extending the base template. 
+The user will navigate by clicking the links in the navbar menu (visible in tablet view and on desktop, collapsed on mobile devices). Main links are set to icons in mobile view.  Templates are linked sitewide by extending the base template. 
 
 ### Entity Relationship Diagram (ERD)
 
-This project is hosted on Heroku, and the database used is Heroku PostgreSQL.
+This project is hosted on Heroku and the database used is Heroku PostgreSQL.
 
-Two models, apart from the Django User model, were created for this project. Tables and TableReservationSlot. 
 
-The following diagram represents the database structure for the restaurant booking system:
+Four main models, apart from the Django User model, were created for this project: Orders, Products, CustomArtworkRequest, and UserProfile.
 
-<img src= "development/images/entity_relationship_diagram_m3.webp">
+The following diagram represents the database structure for the e-commerce website:
+
+<img src= "development/images/entity_relationship_diagram_m4.webp">
 
 ### Users (Django's built-in)
 * id (PK)
@@ -133,42 +145,68 @@ The following diagram represents the database structure for the restaurant booki
 * password
 * ...
 
-### Tables
+### Products
 * id (PK)
 * name
-* location (inside/outside)
-* capacity
+* description
+* price
+* image (URL)
+* created_at
+* updated_at    
+* is_sold (Boolean)
 
-### TableReservationSlot
+### Orders
 * id (PK)
-* table (FK → Tables)
-* date
-* time_slot
-* amount (number of guests)
-* customer_name
-* email
-* notes
-* available
-* max_amount
+* user (FK → Users)
+* order_date
+* total_amount
+* status
+* created_at
+* updated_at
+
+### OrderItems
+* id (PK)
+* order (FK → Orders)
+* product (FK → Products)
+* quantity
+* price
+
+### CustomArtworkRequest
+* id (PK)
+* user (FK → Users)
+* request_date
+* artwork_description
+* additional_notes
 
 ### Relationships
 
-### User > TableReservationSlot
+### User > CustomArtworkRequest
 
-* A User can make many TableReservationSlots
-* Each TableReservationSlot belongs to one User
+* A User can make many CustomArtworkRequests
+* Each CustomArtworkRequest belongs to one User
 
-### Table > TableReservationSlot
+### Products > OrderItems
 
-* A Table (e.g., Table 5) can appear in many reservation slots over time.
-* Each TableReservationSlot refers to one Table.
+* Each Product can appear in at most one OrderItem (or OrderLineItem), since each product is unique and can only be sold once.
+* Each OrderItem refers to one Product.
+
+### Orders > OrderItems
+* An Order can have many OrderItems.
+* Each OrderItem belongs to one Order.
+
+### Users > UserProfile
+
+* Each User has one UserProfile (one-to-one relationship).
+* Each UserProfile belongs to one User.
+
+
 
 
 ## 4. UI Design
 ### Surface
-My aim was to keep the font readable but to have some levity to match the style of restaurant. The lettering is clear against the light background. The idea was to invoke the idea of ketchup and mustard for the user since the restaurant serves hotdogs. 
+My aim was to keep the font decorative but readable. I wanted to ensure the website felt tasteful and refined. The lettering is clear against the light background. The colours across the pages were chosen to be soft and inviting, with a bisque and light olive green to create a warm and welcoming atmosphere.
 
-The smaller text of the site will be black #000000 against the contrasting background of light yellow #feffcc to allow for readability. Some larger text will be burgundy #800017.
+The text of the site will be black #000000 against the contrasting background of light olive green and bisque to allow for readability.
 
 <img src ="development/images/color-picker-palette.webp">
 (https://imagecolorpicker.com/ used to create palettes)
@@ -179,25 +217,25 @@ The smaller text of the site will be black #000000 against the contrasting backg
 * Contrasting font and background choices
 
 #### Fonts
-Primary font -  "Luckiest Guy", cursive
+Primary font -  
 <img src = "development/images/primary-font.webp">
 
-Secondary font - "Lilita One", cursive
+Secondary font - 
 <img src="development/images/secondary_font.webp">
 
-The two fonts had similarities in style and were both bold and readable. Lilita One was a better choice for the booking form and for the menus as it included a lowercase font. 
+The two fonts had similarities in style and were both bold and readable. '"Tangerine", cursive' was used only for the logo in the navbar. '"Cormorant Upright", serif' was used for the remainder of the site to ensure maximum readbility while maintaining a consistent, elegant style.
 
 
 ## Initital design wireframes created using Balsamiq
 
 Homepage (/home)
-<img src="development/images/homepage.webp">
+<img src="">
 
 Menu and Reviews (/menu)
-<img src="development/images/menu-and-reviews.webp">
+<img src="">
 
 Booking (/reservations)
-<img src="development/images/booking-page.webp">
+<img src="">
 ---
 ## 5. Deployment
 
