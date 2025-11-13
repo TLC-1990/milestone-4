@@ -96,19 +96,19 @@ The user will be able to navigate the website using a navbar at the top of the p
 ### Scope
 The project will consist of seven main pages (Home, Products, Biography, Custom Artwork Request, Profile, Checkout and Bag) as well as interim success/login pages.  
 
-1. Homepage - Loading the page will bring the user to https://milestone-4-9edac19c3460.herokuapp.com/.  A navbar at the top of the page will allow the user to navigate to other templates and apps within the project.
-2. Products - This page will show all available artworks for sale. Each artwork will have an image, title, price and short description. The user can click on an artwork to view more details.
-3. Artist Biography - This page will provide information about the artist, including their background, artistic style, and contact information.
-4. Custom Artwork Request - This page will include a form for users to submit custom artwork requests. The form will include fields for the user's name, email, artwork description, and any additional notes.
-5. Profile - This page will allow users to view their order history and manage their account details.
-6. Checkout - This page will allow users to review their shopping cart, enter shipping and payment information, and complete their purchase.
-7. Bag - This page will show the user's shopping cart, including the artworks they have added, quantities, and total price. Users can update quantities or remove items from their cart.
+1. Homepage (/home) - Loading the page will bring the user to https://milestone-4-9edac19c3460.herokuapp.com/.  A navbar at the top of the page will allow the user to navigate to other templates and apps within the project.
+2. Products (/products) - This page will show all available artworks for sale. Each artwork will have an image, title, price and short description. The user can click on an artwork to view more details.
+3. Artist Biography (/biography) - This page will provide information about the artist, including their background, artistic style, and contact information.
+4. Custom Artwork Request (/custom-artwork-request) - This page will include a form for users to submit custom artwork requests. The form will include fields for the user's name, email, artwork description, and any additional notes.
+5. Profile (/profiles) - This page will allow users to view their order history and manage their account details.
+6. Checkout (/checkout) - This page will allow users to review their shopping cart, enter shipping and payment information, and complete their purchase.
+7. Bag (/bag) - This page will show the user's shopping cart, including the artworks they have added, quantities, and total price. Users can update quantities or remove items from their cart.
 
 #### Additional/Interim pages for functionality
 
-4. Sign Up - This page includes input areas for username, password and password confirmation. This page includes the rules provided by django.allauth regarding username and password appropriateness. 
-5. Sign-in - A simple page through which a user can sign in using their credentials. If they are not already registered, there is a link to register. 
-6. Order Success - A simple interim page following a successful order which links the user back to the home page or to their profile to view their order history.
+4. Sign Up (/accounts/signup) - This page includes input areas for username, password and password confirmation. This page includes the rules provided by django.allauth regarding username and password appropriateness. 
+5. Sign-in (/accounts/login) - A simple page through which a user can sign in using their credentials. If they are not already registered, there is a link to register. 
+6. Order Success (/order-success) - A simple interim page following a successful order which links the user back to the home page or to their profile to view their order history.
 
 
 Once created, orders and custom artwork requests can be viewed and amended via /admin through the use of a superuser log-in. Registered user details can also be viewed within the /admin portal. The order model includes fields for user, order date, order total, and order items. The custom artwork request model includes fields for user, request date, artwork description, and additional notes.
@@ -131,6 +131,7 @@ The user will navigate by clicking the links in the navbar menu (visible in tabl
 
 This project is hosted on Heroku and the database used is Heroku PostgreSQL.
 
+Payments are handled by Stripe.
 
 Four main models, apart from the Django User model, were created for this project: Orders, Products, CustomArtworkRequest, and UserProfile.
 
@@ -231,11 +232,24 @@ The two fonts had similarities in style and were both bold and readable. '"Tange
 Homepage (/home)
 <img src="">
 
-Menu and Reviews (/menu)
+Biography (/biography)
 <img src="">
 
-Booking (/reservations)
+Products (/products)
 <img src="">
+
+Product Detail (/products/<id>)
+<img src="">
+
+Bag (/bag)
+<img src="">
+
+Checkout (/checkout)
+<img src="">
+
+Profile (/profiles)
+<img src="">
+
 ---
 ## 5. Deployment
 
@@ -243,8 +257,8 @@ Booking (/reservations)
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/TLC-1990/Milestone-3-Project/
-   cd milestone-3
+   git clone https://github.com/TLC-1990/milestone-4/
+   cd milestone-4
    ```
 2. Set Up Environment Variables
 
@@ -273,7 +287,7 @@ Booking (/reservations)
    Ensure DEBUG = False in production for security.
 8. Prepare Procfile:
    Ensure your Procfile is present and contains:
-   web: gunicorn my_project.wsgi
+   web: gunicorn jlc_art_ecommerce.wsgi
 9. Deploy to Heroku:
    * Push your code to Heroku using Git.
    * Add necessary Heroku add-ons (e.g., Heroku Postgres for the database).
@@ -286,7 +300,7 @@ Booking (/reservations)
    Ensure .gitignore includes sensitive files (e.g., env.py, db.sqlite3) and unnecessary local files.
 13. Access the Site:
    Visit your Heroku app URL to view the deployed site.
-  HTTPS://milestone-3-ede96df867cb.herokuapp.com/home/ 
+  https://milestone-4-9edac19c3460.herokuapp.com/home/
 
 ---
 
@@ -308,24 +322,30 @@ Booking (/reservations)
 
 7. Static files for the project were handled by Whitenoise. 
 
-8. Debug was set to True during development and to False for submission. 
+8. Media files for the project were handled by Cloudinary.
+
+9. Payments were handled by Stripe.
+
+10. Debug was set to True during development and to False for submission.
 
 
 **Live Site:**  
-[milestone-3-ede96df867cb.herokuapp.com/home/](https://milestone-3-ede96df867cb.herokuapp.com/home/)
+[milestone-4-9edac19c3460.herokuapp.com/home/](https://milestone-4-9edac19c3460.herokuapp.com/home/)
 
 ### Technologies Used
 - Python 3.x
 - Django 4.x
 - Bootstrap 5
 - Heroku
-- Litepicker (JS date picker)
+- Stripe (for payments)
 - HTML, CSS
--JavaScript (external library scripts via CDN and custom JS for Litepicker)
+- JavaScript (external library scripts via CDN)
+- Cloudinary (for media file handling)
 
 ## 6. Testing 
 
-Website checked on Safari and on Chrome on desktop and on IOS (Apple mobile). No bugs observed between browsers. 
+Website checked on Safari and on Chrome on desktop, ASUS laptop (Microsoft Edge and Chrome), Samsung Galaxy mobile browser (Android) and on IOS (Apple mobile). 
+No bugs observed between browsers. 
 
 ### Manual Testing
 
@@ -335,16 +355,22 @@ I tested each feature of the site to ensure it works as intended and challenged 
 
 | Feature | Action | Expected Result | Pass/Fail | Notes |
 | ------- | ------ | --------------- | --------- | ----- |
-| Home page loads | Visit `/home` | Page loads with navbar (collapsed on mobile and smaller screens), hero image and title, restaurant introduction and button to book a table. | ✅ Pass | No notes |
-| Follow navbar links | Click `/menu` (sign up and login detailed below)  | Page changes to Menu and Reviews page |  ✅ Pass | Menu loads successfully and is responsive. |
-| Sign in | Visit `/accounts/login`. Entered correct and incorrect login details as well as missing details| Validation error was shown during incorrect login process, correct log in details take a user to /home or to `/bookings` depending on the link followed to login | ✅ Pass | No Notes |
+| Home page loads | Visit `/home` | Page loads with navbar (collapsed on mobile and smaller screens), splash page with enter store button. | ✅ Pass | No notes |
+| Follow navbar links | Click `/biography` (sign up and login detailed below)  | Page changes to artist biography page |  ✅ Pass | Biography page loads successfully and is responsive. |
+| Sign in | Visit `/accounts/login`. Entered correct and incorrect login details as well as missing details| Validation error was shown during incorrect login process, correct log in details take a user to /home | ✅ Pass | No Notes |
 | Signup | Visit `accounts/signup`. Entered fully filled form and incorrect login details and then form with missing details (i.e. email) | Validation error was shown with missing details. A fully completed form sends a confirmation email to the given email address. A confirmed email, following an approved acceptance from the user, takes the user back to the sign in page. | ✅ Pass | A user's login details are saved to the database and can be viewed and edited by the superuser. The user's password is protected from view by AllAuth security. |
-| Booking a table |Follow `/bookings`. Fill out fields successfully and missing information.| Successful validation and form submission lead to a success page. Unsuccessful validation and form submission bring up validation errors for the user. A successful booking will be logged to the database and the table will no longer be available to book at that time on that date. An unsuccessful booking will not be logged to the database. | ✅ Pass | No notes |
-| View bookings | View past and future logged in via `/my-bookings` |If a user has bookings, they should be shown these bookings (both past and future) in stacked tables. Bookings for the future have button links to edit and cancel bookings. | ✅ Pass | Bookings viewable and bookings can be managed by user |
-| Edit booking  | Click “Edit" on a future booking | Booking form is shown, prepopulated with original booking details. User can amend date/time/table or add notes. A valid form sumbmission leads back to the `/my-bookings` page. Unsuccessful validation shows the user errors for them to fix. | ✅ Pass | No notes  |
-| Cancel booking | Click 'Cancel' on a future booking | A confirmation message is shown to the user, leading to a cancellation confirmation page following approval by the user (UPDATE: bug appeared during final testing (see final resolved bug note below)) | ✅ Pass | Confirmation page links back to the homepage |
-| Log out | Following the log out link in navbar whilst logged in | User is logged out and is returned to `/home` | ✅ Pass | No notes |
-| Booking an already booked table | Booking a specific table at a time and date on which it is already booked | User friendly validation error shown on `/edit-booking` page. Validation error shown on `/bookings` however it is not as user friendly. | ⚠️ Partial | Given more time the validation errors would be consistent |
+| View products | Visit `/products` | All available products are shown in a grid format with image, title, price and short description. | ✅ Pass | No notes |
+| View product detail | Click on a product from `/products` | Product detail page is shown with larger image, full description, price and add to bag button. | ✅ Pass | No notes |
+| Create a custom artwork request | Visit `/custom-artwork-request`. Fill out form with all fields and with missing fields. | Successful form submission leads to a success page. Unsuccessful validation shows the user errors for them to fix. A successful custom artwork request is logged in the database and viewable in the admin panel by the superuser. A user's requests are viewable in the Profiles view. | ✅ Pass | No notes |
+| Add to bag | From product detail page and click 'Add to Bag' | Item is added to bag and toast message confirms that item has been added to `/bag` page. Bag icon in navbar updates to show number of items in bag and current total. | ✅ Pass | No notes |
+| View bag | Click on bag icon in navbar or visit `/bag` | Bag page is shown with all items added, delivery options and total price. User can remove items from bag and update delivery options (courrier (paid) or collection (free)). | ✅ Pass | No notes |
+| Complete checkout form |Follow `/checkout` (following items added to bag). Fill out fields successfully and missing information.| Successful validation and form submission lead to a success page. Unsuccessful validation and form submission bring up validation errors for the user. A successful order will be logged in the database and viewable in the admin panel by the superuser. A user's orders are viewable in the Profiles view. | ✅ Pass | No notes |
+| Stripe payment handled successfully. | Follow `/checkout` (following items added to bag). Fill out fields successfully and missing information.| Successful payment confirmation is shown to the user following the payment process loading page, and the order is processed. Payment logged in Stripe dashboard and order added to admin panel | ✅ Pass | No notes |
+| User profile page viewable with previous orders and custom requests | View last saved contact details, artwork orders and custom artwork requests at '/profiles' |If a user has orders, they will see a list of these with their details (price, shipping options, etc.). They will also see the details of any custom artwork requests as well as any uploaded images for reference. A user's details (name, address, email and phone number) are displayed at the bottom of the page for user reference. For superuser, a complete list of all orders and custom requests is shown, including user details and date of order. | ✅ Pass | Bookings viewable and bookings can be managed by user |
+| Toast messages following successes or errors  | Toasts shown for login, signup, and other actions | Toast messages appear following successful or unsuccessful actions, providing feedback to the user. | ⚠️ Partial | Majority of toasts showing, however the change in delivery options seems not to appear despite the function being present and successful. |
+| Order success page| Following a successful order a user will land on '/checkout-success' | Confirmation details are shown to a user including order summary and delivery details. If the user is logged in, a link to '/products' and '/profiles' is also shown. If the user is not logged in, a link to '/accounts/signup' is shown so they can sign up. | ✅ Pass | Confirmation page links back to the products for all users, different options are shown to users who are signed in and those who need to sign up. |
+| Log out | Following the log out link in navbar whilst logged in | Confirmation request is shown and following confirmation user is logged out and is returned to `/home` | ✅ Pass | No notes |
+| Sorting products by category | Visit `/products` and select a category | Products are filtered by the selected category and displayed accordingly. | ✅ Pass | If no products are found, a message is shown to the user. |
 
 ---
 
@@ -371,48 +397,85 @@ Laptop view (large screen)
 Desktop view (xl screen)
 <img src="development/images/desktop_home.webp">
 
-#### Menu Page (`/menu`)
+#### Biography Page (`/biography`)
 Mobile view (small screen)
-<img src="development/images/phone_menu.webp">
+<img src="development/images/phone_biography.webp">
 Tablet view (medium screen)
-<img src="development/images/tablet_menu.webp">
+<img src="development/images/tablet_biography.webp">
 Laptop view (large screen)
-<img src="development/images/laptop_menu.webp">
+<img src="development/images/laptop_biography.webp">
 Desktop view (xl screen)
-<img src="development/images/desktop_menu.webp">
+<img src="development/images/desktop_biography.webp">
 
-#### Booking Page (`/bookings`)
+#### Products Page (`/products`)
 Mobile view (small screen)
-<img src="development/images/phone_booking.webp">
+<img src="development/images/phone_products.webp">
 Tablet view (medium screen)
-<img src="development/images/tablet_booking.webp">
+<img src="development/images/tablet_products.webp">
 Laptop view (large screen)
-<img src="development/images/laptop_booking.webp">
+<img src="development/images/laptop_products.webp">
 Desktop view (xl screen)
-<img src="development/images/desktop_booking.webp">
+<img src="development/images/desktop_products.webp">
 
-#### My Bookings Page (`/my-bookings`)
+#### Product Detail Page (`/products/<id>`)
 Mobile view (small screen)
-<img src="development/images/phone_view_bookings.webp">
+<img src="development/images/phone_product_detail.webp">
 Tablet view (medium screen)
-<img src="development/images/tablet_view_bookings.webp">
+<img src="development/images/tablet_product_detail.webp">
 Laptop view (large screen)
-<img src="development/images/laptop_view_bookings.webp">
+<img src="development/images/laptop_product_detail.webp">
 Desktop view (xl screen)
-<img src="development/images/desktop_view_bookings.webp">
+<img src="development/images/desktop_product_detail.webp">
 
-#### Edit Booking Page (`/my-bookings/<pk>/edit/`)
-(Same layout as booking page but prepopulated with existing booking details)
-
-#### Confirm Cancel Booking Page (`/my-bookings/<pk>/cancel/`)
+#### Custom Artwork Request Page (`/custom-artwork-request`)
 Mobile view (small screen)
-<img src="development/images/phone_cancel.webp">
+<img src="development/images/phone_custom_request.webp">
 Tablet view (medium screen)
-<img src="development/images/tablet_cancel.webp">
+<img src="development/images/tablet_custom_request.webp">
 Laptop view (large screen)
-<img src="development/images/laptop_cancel.webp">
+<img src="development/images/laptop_custom_request.webp">
 Desktop view (xl screen)
-<img src="development/images/desktop_cancel.webp">
+<img src="development/images/desktop_custom_request.webp">  
+
+#### Profile Page (`/profiles`)
+Mobile view (small screen)
+<img src="development/images/phone_profiles.webp">
+Tablet view (medium screen)
+<img src="development/images/tablet_profiles.webp">
+Laptop view (large screen)
+<img src="development/images/laptop_profiles.webp">
+Desktop view (xl screen)
+<img src="development/images/desktop_profiles.webp">
+
+#### Bag (`/bag`)
+Mobile view (small screen)
+<img src="development/images/phone_bag.webp">
+Tablet view (medium screen)
+<img src="development/images/tablet_bag.webp">
+Laptop view (large screen)
+<img src="development/images/laptop_bag.webp">
+Desktop view (xl screen)
+<img src="development/images/desktop_bag.webp">
+
+#### Checkout Page (`/checkout`)
+Mobile view (small screen)
+<img src="development/images/phone_checkout.webp">
+Tablet view (medium screen)
+<img src="development/images/tablet_checkout.webp">
+Laptop view (large screen)
+<img src="development/images/laptop_checkout.webp">
+Desktop view (xl screen)
+<img src="development/images/desktop_checkout.webp">
+
+#### Checkout Success Page (`/checkout-success`)
+Mobile view (small screen)
+<img src="development/images/phone_checkout_success.webp">
+Tablet view (medium screen)
+<img src="development/images/tablet_checkout_success.webp">
+Laptop view (large screen)  
+<img src="development/images/laptop_checkout_success.webp">
+Desktop view (xl screen)
+<img src="development/images/desktop_checkout_success.webp">
 
 ### Accessibility Testing
 
@@ -446,51 +509,67 @@ Desktop scores
 * Third-party scripts such as Bootstrap in base.html
 
 
-Menu (`/menu`)
+Biography (`/Biography`)
 
 Mobile scores
-<img src="development/images/menu_mobile_lighthouse.webp">
+<img src="development/images/biography_mobile_lighthouse.webp">
 
 Desktop scores
-<img src="development/images/menu_desktop_lighthouse.webp">
+<img src="development/images/biography_desktop_lighthouse.webp">
 
-Booking (`/bookings`)
+Products (`/products`)
 
 Mobile scores
-<img src="development/images/booking_mobile_lighthouse.webp">
+<img src="development/images/products_mobile_lighthouse.webp">
 
 Desktop scores
-<img src="development/images/booking_desktop_lighthouse.webp">
+<img src="development/images/products_desktop_lighthouse.webp">
+
+Product Detail (`/products/<id>`)
+Mobile scores
+<img src="development/images/product_detail_mobile_lighthouse.webp">
+Desktop scores
+<img src="development/images/product_detail_desktop_lighthouse.webp">
+
+Custom Artwork Request (`/custom-artwork-request`)
+Mobile scores
+<img src="development/images/custom_artwork_mobile_lighthouse.webp">
+Desktop scores
+<img src="development/images/custom_artwork_desktop_lighthouse.webp">
+
+Profile (`/profiles`)
+Mobile scores
+<img src="development/images/profiles_mobile_lighthouse.webp">
+Desktop scores
+<img src="development/images/profiles_desktop_lighthouse.webp">
+
+Checkout (`/checkout`)
+Mobile scores
+<img src="development/images/checkout_mobile_lighthouse.webp">  
+Desktop scores
+<img src="development/images/checkout_desktop_lighthouse.webp">
+
+Checkout success (`/checkout-success`)
+Mobile scores
+<img src="development/images/checkout_success_mobile_lighthouse.webp">
+Desktop scores
+<img src="development/images/checkout_success_desktop_lighthouse.webp">
 
 #### Issues
-* Large layout shifts cause slowing between main section and footer. 
+* 
 * Third-party scripts such as Bootstrap in base.html
 
-View Bookings (`my-bookings`)
-
-Mobile scores
-<img src="development/images/view_bookings_mobile_lighthouse.webp">
-
-Desktop scores
-<img src="development/images/view_bookings_desktop_lighthouse.webp">
-
-Edit/Cancel Bookings (`/my-bookings/<pk>/edit/`)
-
-Mobile scores
-<img src="development/images/edit_booking_mobile_lighthouse.webp">
-Desktop scores
-<img src="development/images/edit_booking_desktop_lighthouse.webp">
 
 ### Bugs Found and Resolved
-1) pk error when trying to open booking page. Resolved by using "<int:pk>/", preventing the system from trying to render ...reservations/reservation. (https://www.geeksforgeeks.org/python/django-url-patterns-python/) - further updated to simply use `/bookings` once fixes had been made with booking system.
+1) Artworks marked as sold were still appearing on the products page. Resolved by adding a filter within the products view to only show products where is_sold = False.
 
-2) Use of dj-reservation was preventing table booking. Incorrect Django model use was causing a conflict in logic and was preventing validation and saving of bookings. Removal of incorrect Django module allowed saving of booking successfully. 
+2) Allauth templates not loading correctly. Templates were not pulling from 'base.html' and were showing unstyled forms. Resolved by adding {% load static %} to the top of all Allauth templates and ensuring that the templates extended 'base.html'. In settings.py, 'accounts' was included in TEMPLATE_DIRS erroneously, along with 'templates' and 'allauth'. 'accounts' was removed to resolve the issue.
 
-3) Introduction of postgreSQL database during development caused an issue with migrations. Previous migrations were deleted except for 0001_initial.py. New migrations were made after tables were readdded to the database in the admin panel.
+3) Cloudinary installation caused an issue with Heroku deployment due to missing dependencies. Resolved by deleting old migrations and remaking them after adding Cloudinary to the local environment. 
 
-4) Replaced django datepicker, which required a static JS file and caused issues with Bootstrap CMD loading, with Litepicker. (https://www.npmjs.com/package/litepicker)
+4) Emails not sending correctly during development. EMAIL_BACKEND was not using smtp in settings.py during development. Resolved by adding the following code to settings.py: 'django.core.mail.backends.smtp.EmailBackend'
 
-5) 'available_amount' caused a large bug in the booking form page. Django-booking required this value, although it didn't fit my needs for the project. Amount and num_people were used in its place and "available_amount = forms.IntegerField(widget=forms.HiddenInput(), required=False)" was used to help parse it without it cusing the page to crash or showing up as a necessary area on the booking page by turning it into a hidden form field. 'available_amount' is therefore not saved to the database.
+5) 
 
 6) Separated 'date' and 'time' after the realisation that both were being logged together. This was causing a bug during the editing of upcoming bookings and was preventing the form from being prepopulated with the chosen date. Separating these into time/time_slot and date using datetime from Django allowed both to be logged separately and the form to validate correctly as well as allowing the user to view all initial details. 
 

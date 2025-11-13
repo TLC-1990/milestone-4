@@ -14,38 +14,44 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="container py-5">
     {% if bag_items %}
     <div class="row justify-content-center">
-        <div class="col-12 text-center">
-            <h2 class="text-black">Your Shopping Bag</h2>
-            <p class="text-black">Review your selected artworks below:</p>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">Item #</th>
-                        <th scope="col">Artwork Title</th>
-                        <th scope="col">Artwork Image</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in bag_items %}
-                    <tr>
-                        <td><strong>{{ forloop.counter }}</strong></td>
-                        <td><strong>{{ item.product.name }}</strong></td>
-                        <td><img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
-                                class="uploaded-image img-fluid">
-                        </td>
-                        <td><strong>£{{ item.product.price }}</strong><br>
-                            <a class="remove-item text-danger text-center" id="remove_{{ item.item_id }}"><small>Remove
-                                    Item</small></a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="text-right">
+        <div class="col-12 col-md-10 col-lg-8">
+            <h2 class="text-black text-center">Your Shopping Bag</h2>
+            <p class="text-black text-center">Review your selected artworks below:</p>
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item #</th>
+                            <th scope="col">Artwork Title</th>
+                            <th scope="col">Artwork Image</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in bag_items %}
+                        <tr>
+                            <td><strong>{{ forloop.counter }}</strong></td>
+                            <td><strong>{{ item.product.name }}</strong></td>
+                            <td>
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
+                                    class="uploaded-image img-fluid mx-auto d-block"
+                                    style="max-width: 100px; max-height: 100px;">
+                            </td>
+                            <td>
+                                <strong>£{{ item.product.price }}</strong><br>
+                                <a class="remove-item text-danger text-center"
+                                    id="remove_{{ item.item_id }}"><small>Remove Item</small></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-right mt-3">
                 <h3 class="text-black">Products Subtotal: £{{ total }}</h3>
                 <h3 class="text-black">Courrier Delivery (25% of Subtotal): £{{ delivery|floatformat:2 }}</h3>
                 <form method="post" action="{% url 'set_collection_option' %}">
@@ -58,20 +64,22 @@
                 </form>
                 <h4 class="text-black">Grand Total: £{{ grand_total|floatformat:2 }}</h4>
             </div>
-        </div>
-        <div class="col-12 text-right mt-3">
-            <a href="{% url 'products' %}" class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black">
-                <span class="icon">
-                    <i class="fas fa-chevron-left"></i>
-                </span>
-                <span class="text-uppercase">Keep Shopping</span>
-            </a>
-            <a href="{% url 'checkout' %}" class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black">
-                <span class="text-uppercase">Secure Checkout</span>
-                <span class="icon">
-                    <i class="fas fa-lock"></i>
-                </span>
-            </a>
+            <div class="text-right mt-3">
+                <a href="{% url 'products' %}"
+                    class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mr-2 mb-2">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase">Keep Shopping</span>
+                </a>
+                <a href="{% url 'checkout' %}"
+                    class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mb-2">
+                    <span class="text-uppercase">Secure Checkout</span>
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </a>
+            </div>
         </div>
     </div>
     {% else %}
@@ -82,7 +90,7 @@
                 walls!</p>
         </div>
     </div>
-    {% endif  %}
+    {% endif %}
 </div>
 
 

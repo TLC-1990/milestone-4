@@ -50,5 +50,5 @@ def set_collection_option(request):
     if request.method == 'POST':
         request.session['local_collection'] = 'local_collection' in request.POST
         print("success message set for collection option")
-        messages.success(request, f'You have selected to collect your order locally.', extra_tags="bag")
+        messages.info(request, f'You have selected to collect your order locally.', extra_tags="bag")
     return redirect('view_bag')
