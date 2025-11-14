@@ -322,15 +322,15 @@ Profile (/profiles)
 
 KEYS necessary for deployment and running the project:
 
-- SECRET_KEY
-- DATABASE_URL
-- CLOUDINARY_URL
-- STRIPE_PUBLIC_KEY
-- STRIPE_SECRET_KEY
-- EMAIL_HOST_USER
-- EMAIL_HOST_PASSWORD
+- SECRET_KEY (from Django project)
+- DATABASE_URL (from Heroku Postgres add-on)
+- CLOUDINARY_URL (from Cloudinary account)
+- STRIPE_PUBLIC_KEY (from Stripe account)
+- STRIPE_SECRET_KEY (from Stripe account)
+- EMAIL_HOST_USER (from email provider (gmail used here))
+- EMAIL_HOST_PASSWORD (from email provider (gmail used here))
 
-Saved in env.py and set as Config Vars in Heroku.
+Saved in env.py, referenced in settings.py and set as Config Vars in Heroku.
 ## Deployment Process (further notes)
 
 #### Project was deployed using GitHub, Visual Studio Code and Heroku.
@@ -391,11 +391,11 @@ I tested each feature of the site to ensure it works as intended and challenged 
 | Create a custom artwork request | Visit `/custom-artwork-request`. Fill out form with all fields and with missing fields. | Successful form submission leads to a success page. Unsuccessful validation shows the user errors for them to fix. A successful custom artwork request is logged in the database and viewable in the admin panel by the superuser. A user's requests are viewable in the Profiles view. | ✅ Pass | No notes |
 | Add to bag | From product detail page and click 'Add to Bag' | Item is added to bag and toast message confirms that item has been added to `/bag` page. Bag icon in navbar updates to show number of items in bag and current total. | ✅ Pass | No notes |
 | View bag | Click on bag icon in navbar or visit `/bag` | Bag page is shown with all items added, delivery options and total price. User can remove items from bag and update delivery options (courrier (paid) or collection (free)). | ✅ Pass | No notes |
-| Complete checkout form |Follow `/checkout` (following items added to bag). Fill out fields successfully and missing information.| Successful validation and form submission lead to a success page. Unsuccessful validation and form submission bring up validation errors for the user. A successful order will be logged in the database and viewable in the admin panel by the superuser. A user's orders are viewable in the Profiles view. | ✅ Pass | No notes |
+| Complete checkout form |Follow `/checkout` (following items added to bag). Fill out fields successfully and missing information.| Successful validation and form submission lead to a success page. Unsuccessful validation and form submission bring up validation errors for the user. A successful order will be logged in the database and viewable in the admin panel by the superuser. A user's orders are viewable in the Profiles view. | ✅ Pass | Email sent to given email address with order details |
 | Stripe payment handled successfully. | Follow `/checkout` (following items added to bag). Fill out fields successfully and missing information.| Successful payment confirmation is shown to the user following the payment process loading page, and the order is processed. Payment logged in Stripe dashboard and order added to admin panel | ✅ Pass | No notes |
 | User profile page viewable with previous orders and custom requests | View last saved contact details, artwork orders and custom artwork requests at '/profiles' |If a user has orders, they will see a list of these with their details (price, shipping options, etc.). They will also see the details of any custom artwork requests as well as any uploaded images for reference. A user's details (name, address, email and phone number) are displayed at the bottom of the page for user reference. For superuser, a complete list of all orders and custom requests is shown, including user details and date of order. | ✅ Pass | Orders, custom requests and contact details are all viewable. Can be managed by superuser in Django admin panel. |
 | Toast messages following successes or errors  | Toasts shown for login, signup, and other actions | Toast messages appear following successful or unsuccessful actions, providing feedback to the user. | ⚠️ Partial | Majority of toasts showing, however the change in delivery options seems not to appear despite the function being present and successful. |
-| Order success page| Following a successful order a user will land on '/checkout-success' | Confirmation details are shown to a user including order summary and delivery details. If the user is logged in, a link to '/products' and '/profiles' is also shown. If the user is not logged in, a link to '/accounts/signup' is shown so they can sign up. | ✅ Pass | Confirmation page links back to the products for all users, different options are shown to users who are signed in and those who need to sign up. |
+| Order success page| Following a successful order a user will land on '/checkout-success' | Confirmation details are shown to a user including order summary and delivery details. If the user is logged in, a link to '/products' and '/profiles' is also shown. If the user is not logged in, a link to '/accounts/signup' is shown so they can sign up. | ✅ Pass | Confirmation page links back to the products for all users, different options are shown to users who are signed in and those who need to sign up. 
 | Log out | Following the log out link in navbar whilst logged in | Confirmation request is shown and following confirmation user is logged out and is returned to `/home` | ✅ Pass | No notes |
 | Sorting products by category | Visit `/products` and select a category | Products are filtered by the selected category and displayed accordingly. | ✅ Pass | If no products are found, a message is shown to the user. |
 
@@ -587,7 +587,7 @@ Desktop scores
 ### Bugs Found and Resolved
 1) Artworks marked as sold were still appearing on the products page. Resolved by adding a sold = models.BooleanField(default=False) field to the Products model.
 
-2) Allauth templates not loading correctly. Templates were not pulling from 'base.html' and were showing unstyled forms. Resolved by adding {% load static %} to the top of all Allauth templates and ensuring that the templates extended 'base.html'. In settings.py, 'accounts' was included in TEMPLATE_DIRS erroneously, along with 'templates' and 'allauth'. 'accounts' was removed to resolve the issue.
+2) Allauth templates not loading correctly. Templates were not pulling from 'base.html' and were showing unstyled forms. Resolved by adding 'load static' to the top of all Allauth templates and ensuring that the templates extended 'base.html'. In settings.py, 'accounts' was included in TEMPLATE_DIRS erroneously, along with 'templates' and 'allauth'. 'accounts' was removed to resolve the issue.
 
 3) Cloudinary installation caused an issue with Heroku deployment due to missing dependencies. Resolved by deleting old migrations and remaking them after adding Cloudinary to the local environment. 
 
@@ -620,7 +620,7 @@ Issues found:
 * aria-labelledby attribute missing correct ID (resolved)
 * li and H4 elements not allowed as part of nav element (left as is for Bootstrap functionality - code taken from codeinstitute Boutique Ado project)
 * The type attribute is unnecessary for JavaScript resources. (left as is for Bootstrap functionality - code taken from codeinstitute Boutique Ado project)
-* <strong> element and image url used in ol element (note to fix in future - left as is for now)
+* 'strong' element and image url used in ol element (note to fix in future - left as is for now)
 
 
 
