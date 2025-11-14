@@ -416,92 +416,155 @@ Tested the site across multiple screen sizes using Chrome DevTools, Apple and An
 ### Responsiveness Screenshots
 #### Home Page (`/home`)
 Mobile view (small screen)
+
 <img src="development/images/phone_home.webp">
+
 Tablet view (medium screen)
+
 <img src="development/images/tablet_home.webp">
+
 Laptop view (large screen)
+
 <img src="development/images/laptop_home.webp">
+
 Desktop view (xl screen)
+
 <img src="development/images/desktop_home.webp">
 
 #### Biography Page (`/biography`)
 Mobile view (small screen)
+
 <img src="development/images/phone_biography.webp">
+
 Tablet view (medium screen)
+
 <img src="development/images/tablet_biography.webp">
+
 Laptop view (large screen)
+
 <img src="development/images/laptop_biography.webp">
+
 Desktop view (xl screen)
+
 <img src="development/images/desktop_biography.webp">
 
 #### Products Page (`/products`)
 Mobile view (small screen)
+
 <img src="development/images/phone_products.webp">
+
 Tablet view (medium screen)
+
 <img src="development/images/tablet_products.webp">
+
 Laptop view (large screen)
+
 <img src="development/images/laptop_products.webp">
+
 Desktop view (xl screen)
+
 <img src="development/images/desktop_products.webp">
 
 #### Product Detail Page (`/products/<id>`)
 Mobile view (small screen)
+
 <img src="development/images/phone_product_detail.webp">
+
 Tablet view (medium screen)
+
 <img src="development/images/tablet_product_detail.webp">
+
 Laptop view (large screen)
+
 <img src="development/images/laptop_product_detail.webp">
+
 Desktop view (xl screen)
+
 <img src="development/images/desktop_product_detail.webp">
 
 #### Custom Artwork Request Page (`/custom-artwork-request`)
 Mobile view (small screen)
+
 <img src="development/images/phone_custom_artwork_request.webp">
+
 Tablet view (medium screen)
+
 <img src="development/images/tablet_custom_artwork_request.webp">
+
 Laptop view (large screen)
+
 <img src="development/images/laptop_custom_artwork_request.webp">
+
 Desktop view (xl screen)
+
 <img src="development/images/desktop_custom_artwork_request.webp">
 
 #### Profile Page (`/profiles`)
 Mobile view (small screen)
+
 <img src="development/images/phone_profile.webp">
+
 Tablet view (medium screen)
+
 <img src="development/images/tablet_profile.webp">
+
 Laptop view (large screen)
+
 <img src="development/images/laptop_profile.webp">
+
 Desktop view (xl screen)
+
 <img src="development/images/desktop_profile.webp">
 
 #### Bag (`/bag`)
 Mobile view (small screen)
+
 <img src="development/images/phone_bag.webp">
+
 Tablet view (medium screen)
+
 <img src="development/images/tablet_bag.webp">
+
 Laptop view (large screen)
+
 <img src="development/images/laptop_bag.webp">
+
 Desktop view (xl screen)
+
 <img src="development/images/desktop_bag.webp">
 
 #### Checkout Page (`/checkout`)
 Mobile view (small screen)
+
 <img src="development/images/phone_checkout.webp">
+
 Tablet view (medium screen)
+
 <img src="development/images/tablet_checkout.webp">
+
 Laptop view (large screen)
+
 <img src="development/images/laptop_checkout.webp">
+
 Desktop view (xl screen)
+
 <img src="development/images/desktop_checkout.webp">
 
 #### Checkout Success Page (`/checkout-success`)
 Mobile view (small screen)
+
 <img src="development/images/phone_checkout_success.webp">
+
 Tablet view (medium screen)
+
 <img src="development/images/tablet_checkout_success.webp">
+
 Laptop view (large screen)  
+
 <img src="development/images/laptop_checkout_success.webp">
+
 Desktop view (xl screen)
+
 <img src="development/images/desktop_checkout_success.webp">
 
 ### Accessibility Testing
