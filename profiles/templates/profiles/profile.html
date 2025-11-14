@@ -82,7 +82,11 @@
                 <strong> Requested surface: </strong>{{ req.get_surface_display }}</li><br>
                 <strong> Reference image (uploaded): </strong>
                 {% if req.reference_image %}
-                <img src="{{ req.reference_image.url }}" alt="User uploaded reference image" class="uploaded-image">
+                <div>
+                    <img src="{{ req.reference_image.url }}" alt="User uploaded reference image" class="uploaded-image">
+                    <br>
+                    <small>Image URL: {{ req.reference_image.url }}</small>
+                </div>
                 {% else %}
                 <span>No image uploaded</span>
                 {% endif %}
