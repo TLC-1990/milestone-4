@@ -3,10 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class CustomArtworkRequest(models.Model):
-    """
-    Represents a custom artwork request made by a user.
-    """
-    
+    """Represents a custom artwork request made by a user."""
+
     CATEGORY_CHOICES = [
         ('portrait', 'Portrait'),
         ('landscape', 'Landscape'),
@@ -57,4 +55,5 @@ class CustomArtworkRequest(models.Model):
     reference_image = models.ImageField(upload_to='custom_artwork_references/', blank=True, null=True)
 
     def __str__(self):
+        """Return a string representation of the custom artwork request."""
         return f"Custom Artwork Request by {self.user.username} - {self.category} ({self.status})"

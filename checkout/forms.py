@@ -1,21 +1,27 @@
+"""Forms for the checkout app."""
 from django import forms
 from .models import Order
 
 class OrderForm(forms.ModelForm):
+    """Form for placing an order."""
+    
     COUNTRY_CHOICES = [('UK', 'United Kingdom')]
 
     country = forms.ChoiceField(choices=COUNTRY_CHOICES, initial='UK')
 
     class Meta:
+        """Meta class for OrderForm."""
+        
         model = Order
         fields = ['full_name', 'email', 'phone_number', 
                   'country', 'postcode', 'town_or_city', 
                   'street_address1', 'street_address2', 'county']
         
     def __init__(self, *args, **kwargs):
-        """Add placeholders and classes, remove auto-generated 
-        labels and set autofocus on first field."""
+        """Add placeholders and classes.
         
+        Remove auto-generated labels and set autofocus on first field.
+        """
         super().__init__(*args, **kwargs)
         placeholders = {
             'full_name': 'Full Name',
@@ -41,11 +47,12 @@ class OrderForm(forms.ModelForm):
             self.fields[field].label = False
     
     def clean(self):
-            cleaned_data = super().clean()
-            country = cleaned_data.get('country')
-            postcode = cleaned_data.get('postcode')
-            if country and country != 'UK':
-                self.add_error('country', 'Currently, we only ship to the United Kingdom.')
+        """Return custom validation for the form."""
+        cleaned_data = super().clean()
+        country = cleaned_data.get('country')
+        postcode = cleaned_data.get('postcode')
+        if country and country != 'UK':
+            self.add_error('country', 'Currently, we only ship to the United Kingdom.')
     
    
    

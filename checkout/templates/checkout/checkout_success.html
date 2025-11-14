@@ -78,25 +78,26 @@
             {% endfor %}
             <hr class="my-0">
             <div class="row text-black text-right">
-                <div class="col-7 offset-2">
+                <!-- Stack order summary and buttons vertically on mobile -->
+                <div class="col-12 col-md-7 offset-md-2 mb-3 mb-md-0">
                     <p class="my-0">Order Total:</p>
                     <p class="my-0">Delivery:</p>
                     <p class="my-0">Grand Total:</p>
                     <a href="{% url 'products' %}"
-                        class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mt-5">
+                        class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mt-5 w-100">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
                         <span>Back to Products</span>
                     </a>
                 </div>
-                <div class="col-3">
+                <div class="col-12 col-md-3">
                     <p class="my-0">£{{ order.order_total | floatformat:2 }}</p>
                     <p class="my-0">£{{ order.delivery_cost | floatformat:2 }}</p>
                     <p class="my-0"><strong>£{{ order.grand_total | floatformat:2 }}</strong></p>
                     {% if user.is_authenticated %}
                     <a href="{% url 'profiles' %}"
-                        class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mt-5">
+                        class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mt-5 w-100">
                         <span>Profile and Order History</span>
                         <span class="icon">
                             <i class="fas fa-shopping-bag"></i>
@@ -104,7 +105,7 @@
                     </a>
                     {% else %}
                     <a href="{% url 'account_signup' %}"
-                        class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mt-5">
+                        class="enter-shop-button btn btn-lg border-black rounded-1 py-1 text-black mt-5 w-100">
                         <span>Create Account</span>
                     </a>
                     {% endif %}

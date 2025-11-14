@@ -1,3 +1,4 @@
+"""Stripe webhook handler for the checkout app."""
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
@@ -10,8 +11,7 @@ import stripe
 @require_POST
 @csrf_exempt
 def webhook(request):
-    """Listen for webhooks from Stripe"""
-    
+    """Listen for webhooks from Stripe."""
     wh_secret = settings.STRIPE_WH_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY
     payload = request.body

@@ -223,3 +223,11 @@ ul {
         padding-top: 164px;
     }
 }
+
+@media (max-width: 575.98px) {
+    .enter-shop-button {
+        min-width: 100% !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

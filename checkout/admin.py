@@ -1,27 +1,65 @@
-from django.contrib import admin
-from .models import Order, OrderLineItem
+"""Views for the bag app: add, remove, view, and set collection option for shopping bag."""
+from django.shortcuts import redirect, render, HttpResponse, get_object_or_404
+from django.contrib import messages
+from products.models import Product
 
 
-class OrderLineItemAdmin(admin.TabularInline):
-    model = OrderLineItem
-    readonly_fields = ('lineitem_total',)
-    
-class OrderAdmin(admin.ModelAdmin):
-    inlines = (OrderLineItemAdmin,)
-    
-    readonly_fields = ('order_number', 'date', 'delivery_cost', 
-                       'order_total', 'grand_total', 
-                       'original_bag', 'stripe_pid')
-    fields = ('order_number', 'date', 'full_name', 'email', 
-              'phone_number', 'country', 'postcode', 
-              'town_or_city', 'street_address1', 
-              'street_address2', 'county', 
-              'delivery_cost', 'order_total', 'grand_total', 
-              'original_bag', 'stripe_pid')
-    list_display = ('order_number', 'date', 'full_name', 
-                    'order_total', 'delivery_cost', 
-                    'grand_total')
-    
-    ordering = ('-date',)
-    
-admin.site.register(Order, OrderAdmin)
+def view_bag(request):
+    """Return the shopping bag page."""
+    return render(request, 'bag/bag.html')
+
+
+def add_to_bag(request, item_id):
+    """Add a specified product to the shopping bag."""
+    product = get_object_or_404(Product, pk=item_id)
+    redirect_url = request.POST.get('redirect_url')
+
+    bag = request.session.get('bag', {})
+
+    if item_id in bag:
+        messages.info(request,
+                      f'{product.name} is already in your bag.',
+                      extra_tags="bag")
+    else:
+        bag[item_id] = 1
+        messages.success(request,
+                         f'Added {product.name} to your bag.',
+                         extra_tags="bag")
+    request.session['bag'] = bag
+    return redirect(redirect_url)
+
+
+def remove_from_bag(request, item_id):
+    """Remove a specified product from the shopping bag."""
+    print("remove_from_bag called")
+    try:
+        product = get_object_or_404(Product, pk=item_id)
+        bag = request.session.get('bag', {})
+
+        if item_id in bag:
+            del bag[item_id]
+            request.session['bag'] = bag
+            print(f"Removed {product.name} from bag")
+            messages.success(request,
+                             f'Removed {product.name} from your bag.',
+                             extra_tags="bag")
+        return redirect('view_bag')
+
+    except Exception as e:
+        messages.error(request,
+                       f'Error removing {product.name} from your bag.',
+                       extra_tags="bag")
+        return HttpResponse(status=500)
+
+
+def set_collection_option(request):
+    """Set the local collection option in the checkout process and remove shipping cost."""
+    print("set_collection_option called")
+    if request.method == 'POST':
+        request.session[
+            'local_collection'] = 'local_collection' in request.POST
+        print("success message set for collection option")
+        messages.info(request,
+                      'You have selected to collect your order locally.',
+                      extra_tags="bag")
+    return redirect('view_bag')

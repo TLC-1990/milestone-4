@@ -5,11 +5,14 @@ from allauth.account.forms import LoginForm
 from .models import CustomArtworkRequest
 from .forms import CustomArtworkRequestForm
 
+
 def custom_artwork_request(request):
-    """ A view to handle custom artwork requests """
+    """Return a view to handle custom artwork requests."""
     if not request.user.is_authenticated:
         login_form = LoginForm()
-        return render(request, 'custom_artwork_request/custom_artwork_request.html', {'login_form': login_form})
+        return render(request,
+                      'custom_artwork_request/custom_artwork_request.html',
+                      {'login_form': login_form})
     if request.method == 'POST':
         form = CustomArtworkRequestForm(request.POST, request.FILES)
         if form.is_valid():
@@ -19,15 +22,20 @@ def custom_artwork_request(request):
             return redirect('request_submission_success')
     else:
         form = CustomArtworkRequestForm()
-    return render(request, 'custom_artwork_request/custom_artwork_request.html', {'form': form})
+    return render(request,
+                  'custom_artwork_request/custom_artwork_request.html',
+                  {'form': form})
+
 
 def request_submission_success(request):
-    return render(request, 'custom_artwork_request/request_submission_success.html')
+    """Render the success page after a custom artwork request is submitted."""
+    return render(request,
+                  'custom_artwork_request/request_submission_success.html')
+
 
 @login_required
 def my_requests(request):
-    """
-    Display all custom artwork requests for the logged-in user.
-    """
+    """Display all custom artwork requests for the logged-in user."""
     requests = CustomArtworkRequest.objects.filter(user=request.user)
-    return render(request, 'custom_artwork_request/my_requests.html', {'requests': requests})
+    return render(request, 'custom_artwork_request/my_requests.html',
+                  {'requests': requests})

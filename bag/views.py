@@ -1,54 +1,44 @@
-from django.shortcuts import redirect, render, HttpResponse, get_object_or_404
-from django.contrib import messages
+"""Context processor for bag contents."""
+from decimal import Decimal
+from django.conf import settings
 from products.models import Product
 
-def view_bag(request):
-    """A view to return the shopping bag page."""
-    
-    return render(request, 'bag/bag.html')
 
-def add_to_bag(request, item_id):
-    """A view to add a specified product to the shopping bag."""
-
-    product = get_object_or_404(Product, pk=item_id)
-    redirect_url = request.POST.get('redirect_url')
-
+def bag_contents(request):
+    """Add the shopping bag contents to the context."""
+    bag_items = []
+    total = 0
+    product_count = 0
     bag = request.session.get('bag', {})
-    
-    if item_id in bag:
-        messages.info(request, f'{product.name} is already in your bag.', extra_tags="bag")
-    else:
-        bag[item_id] =  1
-        messages.success(request, f'Added {product.name} to your bag.', extra_tags="bag")
-    request.session['bag'] = bag
-    return redirect(redirect_url)
 
-def remove_from_bag(request, item_id):
-    """A view to remove a specified product from the shopping bag."""
-    print("remove_from_bag called")
-    try:
-        product = get_object_or_404(Product, pk=item_id)
-        bag = request.session.get('bag', {})
-
-        if item_id in bag:
+    for item_id in list(bag):
+        try:
+            product = Product.objects.get(pk=item_id)
+            total += product.price
+            product_count += 1
+            bag_items.append({
+                'item_id': item_id,
+                'product': product,
+            })
+        except Product.DoesNotExist:
             del bag[item_id]
             request.session['bag'] = bag
-            print(f"Removed {product.name} from bag")
-            messages.success(request, f'Removed {product.name} from your bag.', extra_tags="bag")
-        return redirect('view_bag')
-    
-    except Exception as e:
-        messages.error(request, f'Error removing {product.name} from your bag.', extra_tags="bag")
-        return HttpResponse(status=500)
-    
-def set_collection_option(request):
-    """
-    A view to set the local collection option in the 
-    checkout process and remove shipping cost.
-    """
-    print("set_collection_option called")
-    if request.method == 'POST':
-        request.session['local_collection'] = 'local_collection' in request.POST
-        print("success message set for collection option")
-        messages.info(request, f'You have selected to collect your order locally.', extra_tags="bag")
-    return redirect('view_bag')
+            continue
+
+    delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+    grand_total = delivery + total
+
+    local_collection = request.session.get('local_collection', False)
+    delivery = 0 if local_collection else total * Decimal(
+        settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+    grand_total = total + delivery
+
+    context = {
+        'bag_items': bag_items,
+        'total': total,
+        'product_count': product_count,
+        'delivery': delivery,
+        'local_collection': local_collection,
+        'grand_total': grand_total,
+    }
+    return context

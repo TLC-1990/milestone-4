@@ -1,3 +1,4 @@
+"""Views for the checkout app: handles checkout, success, and Stripe integration."""
 from django.shortcuts import redirect, render, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
@@ -13,7 +14,7 @@ import stripe
 import json
 
 def cache_checkout_data(request):
-    """ A view to cache checkout data """
+    """Cache checkout data for Stripe payment intent."""
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -30,7 +31,7 @@ def cache_checkout_data(request):
     
     
 def checkout(request):
-    """ A view to return the checkout page """
+    """Return the checkout page and handle order submission."""
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     
@@ -79,6 +80,13 @@ def checkout(request):
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
+                    if product.sold:
+                        messages.error(request, (
+                            f"Sorry, the product '{product.name}' is no longer available. "
+                            "It has already been sold. Please remove it from your bag to continue."
+                        ))
+                        order.delete()
+                        return redirect(reverse('view_bag'))
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
@@ -128,9 +136,7 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
-    """
-    Handle successful checkouts
-    """
+    """Handle successful checkouts and mark products as sold."""
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order successfully processed! \

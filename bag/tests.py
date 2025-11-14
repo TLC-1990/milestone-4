@@ -1,3 +1,5 @@
+# """Tests for the bag app."""
+# No tests implemented yet
 from django.test import TestCase
 
 # Create your tests here.

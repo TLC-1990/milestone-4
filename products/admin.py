@@ -1,8 +1,11 @@
+"""Admin configuration for Product and Category models."""
 from django.contrib import admin
 from .models import Product,Category
 # Register your models here.
 
 class ProductAdmin(admin.ModelAdmin):
+    """Admin view for Product model."""
+    
     list_display = ('name', 'category', 'price', 'image', 'material', 'dimensions', 'sold')
     search_fields = ('name', 'description', 'material')
     list_filter = ('category',)
@@ -10,6 +13,8 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = ('category', 'name',)
 
 class CategoryAdmin(admin.ModelAdmin):
+    """Admin view for Category model."""
+    
     list_display = ('friendly_name', 'name')
     search_fields = ('friendly_name', 'name')
 

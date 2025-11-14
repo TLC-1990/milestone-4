@@ -1,3 +1,4 @@
+"""Django settings for jlc_art_ecommerce project."""
 from pathlib import Path
 import os
 import dj_database_url
@@ -12,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '.herokuapp.com',
@@ -75,7 +76,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'bag.contexts.bag_contents',
-                
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',

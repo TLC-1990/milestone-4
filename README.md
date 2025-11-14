@@ -1,7 +1,7 @@
 # Milestone-4-Project
 # An e-commerce website for an artist and their services. 
 
-<img src="development/images/responsiveness_mockup.webp">
+<img src="development/images/all-devices-black-milestone-4.webp">
 (via https://websitemockupgenerator.com/) 
 
 # Jane L.C Online Studio
@@ -108,7 +108,7 @@ The project will consist of seven main pages (Home, Products, Biography, Custom 
 
 4. Sign Up (/accounts/signup) - This page includes input areas for username, password and password confirmation. This page includes the rules provided by django.allauth regarding username and password appropriateness. 
 5. Sign-in (/accounts/login) - A simple page through which a user can sign in using their credentials. If they are not already registered, there is a link to register. 
-6. Order Success (/order-success) - A simple interim page following a successful order which links the user back to the home page or to their profile to view their order history.
+6. Checkout Success (/checkout-success) - A simple interim page following a successful order which links the user back to the home page or to their profile to view their order history.
 
 
 Once created, orders and custom artwork requests can be viewed and amended via /admin through the use of a superuser log-in. Registered user details can also be viewed within the /admin portal. The order model includes fields for user, order date, order total, and order items. The custom artwork request model includes fields for user, request date, artwork description, and additional notes.
@@ -118,8 +118,18 @@ All orders and custom artwork requests can be viewed by the superuser in the /pr
 The superuser can add, edit, and delete products via the Django admin interface as well as mark them as sold/unsold. A sold product will not appear on the products page for users to view or purchase.
 
 ### Admin Order View
-<img src ="development/images/table_booking_in_admin.webp">
-ADD SCREENSHOTS OF ADMIN PANELS
+Orders can be viewed and managed by the superuser in the admin panel.
+<img src="development/images/admin_order.webp">
+
+Products can be managed by the superuser in the admin panel.
+<img src="development/images/admin_products.webp">
+
+Custom Artwork Requests can be managed by the superuser in the admin panel.
+<img src="development/images/admin_custom_artwork_requests.webp">
+
+Categories can be managed by the superuser in the admin panel.
+<img src="development/images/admin_categories.webp">
+
 
 ### Structure
 (See wireframes section below)
@@ -154,7 +164,7 @@ The following diagram represents the database structure for the e-commerce websi
 * image (URL)
 * created_at
 * updated_at    
-* is_sold (Boolean)
+* sold (Boolean)
 
 ### Orders
 * id (PK)
@@ -209,7 +219,7 @@ My aim was to keep the font decorative but readable. I wanted to ensure the webs
 
 The text of the site will be black #000000 against the contrasting background of light olive green and bisque to allow for readability.
 
-<img src ="development/images/color-picker-palette.webp">
+<img src="development/images/color-picker-palette-milestone-4.webp">
 (https://imagecolorpicker.com/ used to create palettes)
 
 #### Accessibility considerations
@@ -219,36 +229,42 @@ The text of the site will be black #000000 against the contrasting background of
 
 #### Fonts
 Primary font -  
-<img src = "development/images/primary-font.webp">
+<img src="development/images/primary-font-milestone-4.webp">
 
-Secondary font - 
-<img src="development/images/secondary_font.webp">
+Logo font - 
+<img src="development/images/logo-font-milestone-4.webp">
 
-The two fonts had similarities in style and were both bold and readable. '"Tangerine", cursive' was used only for the logo in the navbar. '"Cormorant Upright", serif' was used for the remainder of the site to ensure maximum readbility while maintaining a consistent, elegant style.
+The two fonts had similarities in style and were both decorative and reflective of the site's theme. '"Tangerine", cursive' was used only for the logo in the navbar. '"Cormorant Upright", serif' was used for the remainder of the site to ensure maximum readbility while maintaining a consistent, elegant style.
 
 
 ## Initital design wireframes created using Balsamiq
 
 Homepage (/home)
-<img src="">
+<img src="development/images/home-wireframe-milestone-4.webp">
 
 Biography (/biography)
-<img src="">
+<img src="development/images/biography-wireframe-milestone-4.webp">
 
 Products (/products)
-<img src="">
+<img src="development/images/products-wireframe-milestone-4.webp">
 
 Product Detail (/products/<id>)
-<img src="">
+<img src="development/images/product-detail-wireframe-milestone-4.webp">
+
+Custom Artwork Request (/custom-artwork-request)
+<img src="development/images/custom-artwork-request-wireframe-milestone-4.webp">
 
 Bag (/bag)
-<img src="">
+<img src="development/images/bag-wireframe-milestone-4.webp">
 
 Checkout (/checkout)
-<img src="">
+<img src="development/images/checkout-wireframe-milestone-4.webp">
+
+Checkout Success (/checkout-success)
+<img src="development/images/checkout-success-wireframe-milestone-4.webp">
 
 Profile (/profiles)
-<img src="">
+<img src="development/images/profile-wireframe-milestone-4.webp">
 
 ---
 ## 5. Deployment
@@ -304,6 +320,17 @@ Profile (/profiles)
 
 ---
 
+KEYS necessary for deployment and running the project:
+
+- SECRET_KEY
+- DATABASE_URL
+- CLOUDINARY_URL
+- STRIPE_PUBLIC_KEY
+- STRIPE_SECRET_KEY
+- EMAIL_HOST_USER
+- EMAIL_HOST_PASSWORD
+
+Saved in env.py and set as Config Vars in Heroku.
 ## Deployment Process (further notes)
 
 #### Project was deployed using GitHub, Visual Studio Code and Heroku.
@@ -366,7 +393,7 @@ I tested each feature of the site to ensure it works as intended and challenged 
 | View bag | Click on bag icon in navbar or visit `/bag` | Bag page is shown with all items added, delivery options and total price. User can remove items from bag and update delivery options (courrier (paid) or collection (free)). | ✅ Pass | No notes |
 | Complete checkout form |Follow `/checkout` (following items added to bag). Fill out fields successfully and missing information.| Successful validation and form submission lead to a success page. Unsuccessful validation and form submission bring up validation errors for the user. A successful order will be logged in the database and viewable in the admin panel by the superuser. A user's orders are viewable in the Profiles view. | ✅ Pass | No notes |
 | Stripe payment handled successfully. | Follow `/checkout` (following items added to bag). Fill out fields successfully and missing information.| Successful payment confirmation is shown to the user following the payment process loading page, and the order is processed. Payment logged in Stripe dashboard and order added to admin panel | ✅ Pass | No notes |
-| User profile page viewable with previous orders and custom requests | View last saved contact details, artwork orders and custom artwork requests at '/profiles' |If a user has orders, they will see a list of these with their details (price, shipping options, etc.). They will also see the details of any custom artwork requests as well as any uploaded images for reference. A user's details (name, address, email and phone number) are displayed at the bottom of the page for user reference. For superuser, a complete list of all orders and custom requests is shown, including user details and date of order. | ✅ Pass | Bookings viewable and bookings can be managed by user |
+| User profile page viewable with previous orders and custom requests | View last saved contact details, artwork orders and custom artwork requests at '/profiles' |If a user has orders, they will see a list of these with their details (price, shipping options, etc.). They will also see the details of any custom artwork requests as well as any uploaded images for reference. A user's details (name, address, email and phone number) are displayed at the bottom of the page for user reference. For superuser, a complete list of all orders and custom requests is shown, including user details and date of order. | ✅ Pass | Orders, custom requests and contact details are all viewable. Can be managed by superuser in Django admin panel. |
 | Toast messages following successes or errors  | Toasts shown for login, signup, and other actions | Toast messages appear following successful or unsuccessful actions, providing feedback to the user. | ⚠️ Partial | Majority of toasts showing, however the change in delivery options seems not to appear despite the function being present and successful. |
 | Order success page| Following a successful order a user will land on '/checkout-success' | Confirmation details are shown to a user including order summary and delivery details. If the user is logged in, a link to '/products' and '/profiles' is also shown. If the user is not logged in, a link to '/accounts/signup' is shown so they can sign up. | ✅ Pass | Confirmation page links back to the products for all users, different options are shown to users who are signed in and those who need to sign up. |
 | Log out | Following the log out link in navbar whilst logged in | Confirmation request is shown and following confirmation user is logged out and is returned to `/home` | ✅ Pass | No notes |
@@ -381,7 +408,7 @@ Tested the site across multiple screen sizes using Chrome DevTools, Apple and An
 | Device             | Expected Behaviour                              | Pass/Fail |
 | ------------------ | ----------------------------------------------- | --------- |
 | Mobile (iPhone 14 Pro, Samsung Galaxy S23, iPhone 15 plus) | Navbar collapsed automatically, text readable and clear  | ✅ Pass    |
-| Tablet (iPad)      | Navbar links clear, site clear, and booking form clear and useable | ✅ Pass    |
+| Tablet (iPad)      | Navbar links clear, site clear, and checkout form clear and useable | ✅ Pass    |
 | Desktop (1080p)    | Full layout visible, site responsive to browswer window size changes    | ✅ Pass    |
 
 ---
@@ -429,23 +456,23 @@ Desktop view (xl screen)
 
 #### Custom Artwork Request Page (`/custom-artwork-request`)
 Mobile view (small screen)
-<img src="development/images/phone_custom_request.webp">
+<img src="development/images/phone_custom_artwork_request.webp">
 Tablet view (medium screen)
-<img src="development/images/tablet_custom_request.webp">
+<img src="development/images/tablet_custom_artwork_request.webp">
 Laptop view (large screen)
-<img src="development/images/laptop_custom_request.webp">
+<img src="development/images/laptop_custom_artwork_request.webp">
 Desktop view (xl screen)
-<img src="development/images/desktop_custom_request.webp">  
+<img src="development/images/desktop_custom_artwork_request.webp">
 
 #### Profile Page (`/profiles`)
 Mobile view (small screen)
-<img src="development/images/phone_profiles.webp">
+<img src="development/images/phone_profile.webp">
 Tablet view (medium screen)
-<img src="development/images/tablet_profiles.webp">
+<img src="development/images/tablet_profile.webp">
 Laptop view (large screen)
-<img src="development/images/laptop_profiles.webp">
+<img src="development/images/laptop_profile.webp">
 Desktop view (xl screen)
-<img src="development/images/desktop_profiles.webp">
+<img src="development/images/desktop_profile.webp">
 
 #### Bag (`/bag`)
 Mobile view (small screen)
@@ -486,30 +513,25 @@ Used [WAVE](https://wave.webaim.org/) and Lighthouse accessibility checker.
 * <H...></H...> tags amended for consecutive consistency.
 * Underlined text amended to italic to avoid confusion with links. 
 
-| Check               | Expected Result                             | Pass/Fail |
+| Check               | Expected Result                             | Pass/Partial/Fail |
 | ------------------- | ------------------------------------------- | --------- |
 | Alt text on images  | All images have alt attributes              | ✅ Pass    |
-| Contrast ratio      | Text has sufficient contrast                | ✅ Pass    |
+| Contrast ratio      | Text has sufficient contrast on most pages, but some elements have low contrast |   ⚠️ Partial  |
 | Keyboard navigation | All interactive elements accessible via Tab | ✅ Pass    |
-| ARIA labels on all external links and any links that are ambiguous | Checked and added where missing    | ✅ Pass    |
+| ARIA labels on all external links and any links that are ambiguous | Checked and added where missing. Added appropriate labels to icons on mobile view  | ⚠️ Partial   |
 
 ### Lighthouse scores
 
 Homepage (`/home`)
 
 Mobile scores
-<img src="development/images/home_mobile_lighthouse.webp">
+<img src="development/images/home_mobile_m4_lighthouse.webp">
  
 Desktop scores
-<img src="development/images/home_desktop_lighthouse.webp">
-
-#### Issues
-* Image is .webp and needs reformatting as .png to improve loading. 
-* Hero image causes slowing
-* Third-party scripts such as Bootstrap in base.html
+<img src="development/images/home_desktop_m4_lighthouse.webp">
 
 
-Biography (`/Biography`)
+Biography scores (`/Biography`)
 
 Mobile scores
 <img src="development/images/biography_mobile_lighthouse.webp">
@@ -556,12 +578,14 @@ Desktop scores
 <img src="development/images/checkout_success_desktop_lighthouse.webp">
 
 #### Issues
-* 
-* Third-party scripts such as Bootstrap in base.html
 
+* Several third-party scripts affecting performance and causing HTTPS errors (Stripe, Cloudinary, FontAwesome and Bootstrap)
+* Desktop scores generally higher than mobile scores due to third-party scripts and large images slowing load times on mobile devices.
+* High-definition images, hosted on Cloudinary, causing slower load times on mobile devices.
+* Some font clarity issues on mobile devices due to decorative font choice and tone.
 
 ### Bugs Found and Resolved
-1) Artworks marked as sold were still appearing on the products page. Resolved by adding a filter within the products view to only show products where is_sold = False.
+1) Artworks marked as sold were still appearing on the products page. Resolved by adding a sold = models.BooleanField(default=False) field to the Products model.
 
 2) Allauth templates not loading correctly. Templates were not pulling from 'base.html' and were showing unstyled forms. Resolved by adding {% load static %} to the top of all Allauth templates and ensuring that the templates extended 'base.html'. In settings.py, 'accounts' was included in TEMPLATE_DIRS erroneously, along with 'templates' and 'allauth'. 'accounts' was removed to resolve the issue.
 
@@ -569,100 +593,130 @@ Desktop scores
 
 4) Emails not sending correctly during development. EMAIL_BACKEND was not using smtp in settings.py during development. Resolved by adding the following code to settings.py: 'django.core.mail.backends.smtp.EmailBackend'
 
-5) 
+5) Toasts showing delivery information and grand total information during sign-in/logout processes. Resolved by adding 'extra_tags' to the messages in views.py to specify the type of message being sent (i.e. 'success' or 'info') and amending the toast code in base.html to only show toasts of a certain type in certain locations.
 
-6) Separated 'date' and 'time' after the realisation that both were being logged together. This was causing a bug during the editing of upcoming bookings and was preventing the form from being prepopulated with the chosen date. Separating these into time/time_slot and date using datetime from Django allowed both to be logged separately and the form to validate correctly as well as allowing the user to view all initial details. 
+6) Images showing as all different sizes on the Products page. Resolved by adding CSS code to set a max-height and object-fit property to the product images on the products page.
 
-7) Booking an already booked table caused a a 500 error and for the page to crash. Resolved by amending the booking form validation to check for existing bookings and raise a ValidationError if the table is already booked at that time on that date.
+7) Image in product detail page showing as very small on mobile devices. Resolved by adding CSS code to set a max-width of 100% for the product detail image on smaller screen sizes.
 
-8) Adding postgreSQL caused an issue with Heroku deployment due to missing dependencies. Resolved by deleting old migrations and remaking them after adding postgreSQL to the local environment.
+8) Overlay on homepage splash page showing a bar of the background image on laptop and desktop views. Resolved by checking unclosed tags in the HTML and amending the CSS for the overlay to ensure it covered the desired viewport height and width.
 
-9) Added POST method (within confirmation button on booking_cancel.html) to cancel booking view to resolve issue with form not submitting changes.
+9) Bag view required side scrolling on mobile devices. Resolved by adding 'table-responsive' class and adjusting classes for images to make the bag table responsive on smaller screen sizes.
 
 ### CSS, HTML, Python and JS Validation
 
 ###  CSS validation
 (W3C CSS validation service
 (https://jigsaw.w3.org/css-validator/) used for CSS validation.)
-<img src="development/images/css_validation.webp">
+<img src="development/images/css_validation_milestone_4.webp">
 
 ### HTML validation
 
 W3C Markup Validation Service 
 (https://validator.w3.org/) used for HTML validation
 
-### `/home`
-<img src="development/images/home_html.webp">
+Issues found:
+* Duplicate ID attributes between base.html and main-nav.html (resolved)
+* aria-labelledby attribute missing correct ID (resolved)
+* li and H4 elements not allowed as part of nav element (left as is for Bootstrap functionality - code taken from codeinstitute Boutique Ado project)
+* The type attribute is unnecessary for JavaScript resources. (left as is for Bootstrap functionality - code taken from codeinstitute Boutique Ado project)
+* <strong> element and image url used in ol element (note to fix in future - left as is for now)
 
-### `/menu`
-<img src="development/images/menu_html.webp">
 
-### `/bookings`
-<img src="development/images/bookings_html.webp">
 
-### `/my-bookings`
-<img src="development/images/booking_list_html.webp">
-
-### `/my-bookings/<pk>/edit/`
-<img src="development/images/edit_html.webp">
-
-### `/my-bookings/<pk>/cancel/`
-<img src="development/images/cancel_html.webp">
-
-Steps taken to resolve errors:
-* Extra closing tags removed
-* Tags fixed in footer
-* Main attribute converted to div to prevent multiple main tags on a page
-* Trailing slashes removed from booking/edit templates
 
 ### Python validation
 Pep8 validation (https://www.codewof.co.nz/style/python3/ and https://www.minifier.org/python-beautifier used to locate and resolve issues)
 
-### Booking_system_app
-admin.py 
-<img src="development/images/admin_booking.webp">
-
+### Home app folder (home)
 apps.py
-<img src="development/images/apps_booking.webp">
-
-forms.py
-<img src="development/images/forms_booking.webp">
-
-models.py
-<img src="development/images/models_booking.webp">
-
+<img src="development/images/apps_home.png">
 urls.py
-<img src="development/images/urls_booking.webp">
-
+<img src="development/images/urls_home.png">
 views.py
-<img src="development/images/views_booking.webp">
+<img src="development/images/views_home.png">
 
-### Main Project Folder
+### Custom_Artwork_Request app folder (custom_artwork_request)
+admin.py
+<img src="development/images/admin_custom_artwork.png"> 
+apps.py
+<img src="development/images/apps_custom_artwork.png">
+forms.py
+<img src="development/images/forms_custom_artwork.png">
+models.py
+<img src="development/images/models_custom_artwork.png">
+urls.py
+<img src="development/images/urls_custom_artwork.png">
+views.py
+<img src="development/images/views_custom_artwork.png">
+
+### Products app folder (products)
+admin.py
+<img src="development/images/admin_products.png">
+apps.py
+<img src="development/images/apps_products.png">
+models.py
+<img src="development/images/models_products.png">
+urls.py
+<img src="development/images/urls_products.png">
+views.py
+<img src="development/images/views_products.png">
+
+### Bag app folder (bag)
+apps.py
+<img src="development/images/apps_bag.png">
+urls.py
+<img src="development/images/urls_bag.png">
+views.py
+<img src="development/images/views_bag.png">
+contexts.py
+<img src="development/images/contexts_bag.png">
+
+### Checkout app folder (checkout)
+apps.py
+<img src="development/images/apps_checkout.png">
+urls.py
+<img src="development/images/urls_checkout.png">
+views.py
+<img src="development/images/views_checkout.png">
+models.py
+<img src="development/images/models_checkout.png">
+forms.py
+<img src="development/images/forms_checkout.png">
+signals.py
+<img src="development/images/signals_checkout.png">
+webhooks.py
+<img src="development/images/webhooks_checkout.png">
+webhook_handlers.py
+<img src="development/images/webhook_handlers_checkout.png">
+
+### Profiles app folder (profiles)
+apps.py
+<img src="development/images/apps_profiles.png">
+urls.py
+<img src="development/images/urls_profiles.png">
+views.py
+<img src="development/images/views_profiles.png">
+models.py
+<img src="development/images/models_profiles.png">
+
+
+
+### Main Project Folder (jlc_art_ecommerce)
 
 settings.py
-<img src="development/images/settings_main_project.webp">
+<img src="development/images/settings_main_project.png">
 
 urls.py
-<img src="development/images/urls_main_project.webp">
+<img src="development/images/urls_main_project.png">
 
 wsgi.py
-<img src="development/images/wsgi_main_project.webp">
+<img src="development/images/wsgi_main_project.png">
 
-### User_Bookings
-apps.py
-<img src="development/images/apps_user_bookings.webp">
-
-urls.py
-<img src="development/images/urls_user_bookings.webp">
-
-views.py
-<img src="development/images/views_user_bookings.webp">
 
 
 ### Steps taken to resolve errors:
 * Lines shortened to under 79 characters, where possible without breaking code logic
-* Added necessary imports
-* Removed unused variables and imports
 * Fixed indentation issues
 * Fixed missing blank lines at end of files
 * Fixed missing two blank lines between classes and functions
@@ -670,9 +724,14 @@ views.py
 * Fixed docstrings where missing
 
 ### JavaScript Validation
-JSLint (https://jslint.com/) used for JS validation
 
-Validation of custom JS code for Litepicker datepicker used on booking form page (/bookings) and edit booking page (/my-bookings/<pk>/edit/) revealed no issues other than single quotes being used instead of double quotes. Edited to use double quotes for consistency.
+stripe_elements.js
+<img src="development/images/stripe_elements_js_validation_milestone_4.webp">
+
+* Missing semicolon added to end of line 116.
+
+Inline JS in templates taken from Code Institute Boutique Ado project. 
+Added missing semi-colon to remove-item JS script in bag.html. No other validation errors found.
 
 ## 7. Security Considerations
 * SECRET_KEY and other sensitive information stored in env.py file, not in main settings.py file.
@@ -681,64 +740,65 @@ Validation of custom JS code for Litepicker datepicker used on booking form page
 * Used HTTPS for secure communication (handled by Heroku).
 * Validated and sanitized user inputs in forms to prevent SQL injection and XSS attacks.
 * Used Django's CSRF protection for forms.
+* Stripe handles payment information securely, ensuring PCI compliance.
 
-### Reflections on Security Issues Encountered
-* Mistakenly committed creds.json to GitHub early in development. Removed file and regenerated credentials to ensure security.
-* Mistakenly missed adding db.sqlite3 to .gitignore early in development. Removed file from GitHub and added to .gitignore to ensure security. Although the project uses PostgreSQL in production, this was important to maintain best practices.
-
-I will ensure to always double-check files before committing to GitHub in future projects to prevent similar issues.
 
 ## 8. Next Step Features	
 
-Having a messaging option would have been helpful, so that customers could have their queries answered either by an AI chat service or, ideally, by a member of staff at the restaurant. 
+Providing further payment options such as PayPal or Apple Pay would have been useful to give users more choice at the checkout stage.
 
-Sending the bookings to GoogleSheets or GoogleCalendar for staff at the restaurant to view bookings would have been useful. 
+Providing a wish list feature for users to save items for later consideration would improve the user experience.
 
-I would have liked to add photos of the food to the menu items, so users would be more engaged and keen to make a booking. 
+Sorting and filtering options on the products page could be expanded to include price range and size.
 
-If the restaurant had multiple locations, I would have liked to add a location choice to the booking form.
+Implementing a search function would also enhance the user experience by allowing users to quickly find specific products.
+
+Creating a dedicated add/edit product page for the superuser to manage products directly on the site, rather than via the Django admin panel, would improve usability for the site owner.
+
+Cancel/edit order functionality for users would enhance the user experience by allowing them to manage their orders more effectively.
 
 
 ## 9. Coding Sources
+
 * Code taken from Bootstrap v5.0 and heavily adapted/edited to fit needs of site (NavBar, buttons)
 * Code Institute lessons - "Love To Blog" and "Boutique Ado" python/django code along lessons as well as prior modules.
 * Balsamiq was used to create wireframes
 * Responsive Viewer Chrome add-on was used for responsiveness screenshots
+* Django documentation used extensively throughout the project for model creation, views, forms and general functionality. https://docs.djangoproject.com/en/5.2/
+* Django Allauth documentation used for user registration and authentication setup. https://django-allauth.readthedocs.io/en/latest/installation.html
+* Cloudinary documentation and 'Love To Code' guidance used for media file handling. https://cloudinary.com/documentation/django_integration
+* Whitenoise documentation used for static file handling. http://whitenoise.evans.io
 
-Django for Beginners (version 2.1) - Templates, Class-based views and URLS (Chapter 3), registration, log-in and authentication (Chapter 7) (available online - https://elhacker.info/manuales/Lenguajes%20de%20Programacion/Python/Django%20for%20Beginners_%20Build%20Websites%20with%20Django%20(Version%202.1).pdf)
+Specific code snippets and advice taken from:
 
-https://docs.djangoproject.com/en/5.2/topics/db/models/  and https://www.w3schools.com/django/django_models.php - creating models in django
+* Toast message code taken from Bootstrap documentation and Code Institute Boutique Ado project. https://getbootstrap.com/docs/5.0/components/toasts/
 
-https://dj-booking.readthedocs.io/en/latest/ and https://pypi.org/project/dj-booking/ - dj-booking documentation for setup.
+* extra_tags in messages was taken from Stack Overflow to help differentiate toast messages shown in different locations on the site. https://docs.djangoproject.com/en/5.2/ref/contrib/messages/
 
-https://stackoverflow.com/questions/64225732/how-to-get-time-slot-in-django-for-doctor-appointment - creating timeslot lists in django
+* Deployment steps taken from Code Institute Heroku deployment documentation and prior knowledge from Boutique Ado project.
 
-https://stackoverflow.com/questions/68776480/django-store-actual-availability-and-query-the-available-schedule-for-new-bookin - cascading time slots and days of the week for booking form 
+* Decorator 'login_required' taken from Django documentation to protect views that require a user to be logged in. https://docs.djangoproject.com/en/5.2/topics/auth/default/#the-login-required-decorator
 
-https://stackoverflow.com/questions/3367091/whats-the-cleanest-simplest-to-get-running-datepicker-in-django - inserting django datepicker plus to replace days of the week
+* if/else statements in templates taken from Django documentation to show different content based on user status. https://docs.djangoproject.com/en/5.2/ref/templates/builtins/#if
 
-https://docs.djangoproject.com/en/5.2/ref/forms/validation/ - clean data validation logic using super()
+* Stripe payment integration code taken from Stripe documentation and Code Institute Boutique Ado project. https://stripe.com/docs/payments/accept-a-payment
 
-https://docs.djangoproject.com/en/5.2/ref/validators/ - raising validator errors in Django to prevent overbooking
+* Django template language documentation used extensively throughout the project for template creation and logic. https://docs.djangoproject.com/en/5.2/ref/templates/language/
 
-https://realpython.com/python-getter-setter/ - Using @property setter to maintain ‘Number of People’ rather than amount in booking form. 
+* Django template conditional statements documentation used for logic in templates. https://docs.djangoproject.com/en/5.2/ref/templates/builtins/#if
 
-https://docs.djangoproject.com/en/5.2/topics/forms/modelforms/ and https://www.djangotricks.com/tricks/Swv44PDSrJYQ - Overriding the save method of the model form to allow ‘num_people’
+* table-responsive class from Bootstrap documentation to help make bag table responsive on smaller screen sizes. https://getbootstrap.com/docs/5.0/content/tables/#responsive-tables
 
-https://stackoverflow.com/questions/9578906/easiest-way-to-combine-date-and-time-strings-to-single-datetime-object-using-pyt/9579030 - creating a single datetime element in forms.py  
+* sold field added to Products model to help manage sold items so they do not appear on products page (Product.objects.filter(sold=False)). https://www.geeksforgeeks.org/python/booleanfield-django-models/
 
-https://www.devhandbook.com/django/templates/ - understanding html templates in django
+* Country set to default in checkout form using a default value in the model field, e.g. `country = models.CharField(max_length=40, default='UK')`. https://docs.djangoproject.com/en/5.2/ref/models/fields/#default
 
-https://stackoverflow.com/questions/14400035/how-to-return-a-static-html-file-as-a-response-in-django - linking and returning static html files in Django
+* /home redirect on homepage load via url patterns in urls.py file taken from Stack Overflow. 
+path('', RedirectView.as_view(url='/home/', permanent=False)),
+ https://stackoverflow.com/questions/15706489/redirect-to-named-url-pattern-directly-from-urls-py-in-django
 
-https://stackoverflow.com/questions/74339432/attempting-to-read-pk-from-url-in-django-but-getting-error-noreversematch-at - url pk error explanation and resolution 
-
-https://sendlayer.com/blog/how-to-send-email-with-django and https://mailtrap.io/blog/django-send-email/ - code and settings to send confirmation emails following booking
-
-
-VSCode Co-Pilot was consulted to assist in migration errors and issues faced with creds.json and github. Assistance sought early on to configure STATIC settings and later to assist with implimentation of Whitenoise and amending of links within templates so they may be readable.
-
-OpenAI consulted to assist with basic html template creation, then heavily adapted to suit project. Consulted for assistance in creating migrations to input table groups (5 indoors/5 outdoors) and creating dummy slot. Suggestions implimented to resolve 'available_amount' issue caused by djbooking system causing a pk error.  
+VSCode Co-Pilot was consulted to assist in migration/deployment errors and issues faced with Stripe validation. Assistance sought early on to configure STATIC settings and later to assist with email errors and amending layout issues (i.e. the checkout page form alignment and spacing on the profiles page).
+  
 
 ## 10. Media Sources
 <table>
@@ -755,41 +815,29 @@ OpenAI consulted to assist with basic html template creation, then heavily adapt
   </thead>
   <tbody>
     <tr>
-      <th scope="row">hotdog-hero.png</th>
-      <td>static/css/images/hotdog-hero.png</td>
-      <td>https://images.pexels.com/photos/4518645/pexels-photo-4518645.jpeg?cs=srgb&dl=pexels-polina-tankilevitch-4518645.jpg&fm=jpg&_gl=1*uhos97*_ga*MTEwMDczMDU5NS4xNzU0MzAzNzI3*_ga_8JE65Q40S6*czE3NTQzMDM3MjYkbzEkZzEkdDE3NTQzMDM5NTckajU5JGwwJGgw</td>
-      <td>/home</td>
-    </tr>
-     <tr>
-      <th scope="row">pexels-godisable-jacob-226636-718978.webp</th>
-      <td>booking_system_app/static/booking_system_app/pexels-godisable-jacob-226636-718978.webp</td>
-      <td>https://images.pexels.com/photos/718978/pexels-photo-718978.jpeg?cs=srgb&dl=pexels-godisable-jacob-226636-718978.jpg&fm=jpg&_gl=1*5ndtqf*_ga*MTM0NDkxODYyMy4xNzU0NDA2NDMw*_ga_8JE65Q40S6*czE3NTQ0MDY0MjkkbzEkZzEkdDE3NTQ0MDY0NDckajQyJGwwJGgw</td>
-      <td>/menu</td>
-    </tr>
-    <tr>
-      <th scope="row">pexels-olly-788567.webp</th>
-      <td>booking_system_app/static/booking_system_app/pexels-olly-788567.webp</td>
-      <td>https://images.pexels.com/photos/788567/pexels-photo-788567.jpeg?cs=srgb&dl=pexels-olly-788567.jpg&fm=jpg&_gl=1*1957m2y*_ga*MTM0NDkxODYyMy4xNzU0NDA2NDMw*_ga_8JE65Q40S6*czE3NTQ0MDY0MjkkbzEkZzEkdDE3NTQ0MDY0NDckajQyJGwwJGgw</td>
-      <td>/menu</td>
-    </tr>
-     <tr>
-      <th scope="row">pexels-olly-846741.webp</th>
-      <td>booking_system_app/static/booking_system_app/pexels-olly-846741.webp</td>
-      <td>https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?cs=srgb&dl=pexels-olly-846741.jpg&fm=jpg&_gl=1*5vso3t*_ga*MTM0NDkxODYyMy4xNzU0NDA2NDMw*_ga_8JE65Q40S6*czE3NTQ0MDY0MjkkbzEkZzEkdDE3NTQ0MDY0NDckajQyJGwwJGgw</td>
-      <td>/menu</td>
+      <th scope="row">Art Easel Icon</th>
+      <td>staticfiles/icon/art-easel-icon.ico</td>
+      <td>https://www.flaticon.com/free-icon/art-easel_1000000</td>
+      <td>All pages</td>
     </tr>
   </tbody>
 </table>
 
+All artwork images used within the site are the property of the site owner and artist. Photos used within the site are photographs of the artist's own work or of the artist herself.
+
+Art material images on Request Custom Artwork page were created by me using my own photography and are the property of the site owner and artist.
+
 ## Reflection on project
 
-This project has been a steep learning curve but I have enjoyed the challenge of creating a functional booking system using Django and Python. 
+This project has been a challenging but rewarding experience. It has allowed me to apply the skills I have learned throughout the course in a practical way, and to develop new skills in Django, Python, and web development in general.
 
-Taking my time, reading the documentation and seeking help when needed has helped me to overcome the various (sometimes multiple!) issues I have faced.  
+I have found myself being able to problem-solve and think critically about how to implement features and functionality, and I have learned a lot about the importance of planning and organization in a project of this scale. Consistent testing and adjustment have been key to ensuring the site works as intended across different devices and browsers. 
 
-This has helped me feel more confident in my coding ability, and in being able to recognise and resolve bugs. Overall , I am pleased with the end result and feel that I have created a functional, user-friendly website that meets the initial project goals.
+I have thought carefully about the user experience and how to create a site that is both functional and visually appealing, while also considering accessibility and usability. I have gained the opinion of friends and family to help me assess the site from a user's perspective, which has been invaluable in identifying areas for improvement.
+
+I look forward to being able to further develop this project in the future, adding new features and functionality as I continue to learn and grow as a developer so that it can become a fully-fledged e-commerce platform for the artist.
 
 ## 11. Acknowledgements 
 * Dr Raghav Kovvuri (HE Lecturer- Computing at University Centre of Peterborough) for support and advice and understanding throughout the course. 
-* Iuliia Konovalova, my wonderful, knowledgeable mentor. Thank you for trying to help stop my panic. 
-* My family and friends for their patience and support throughout the course and for the steady supply of black coffee, sweets and the odd shoulder to cry on!
+* Iuliia Konovalova, my wonderful, knowledgeable mentor. Thank you for trying to help stop my panic - sorry for the big Heroku headache!
+* My family and friends for putting up with my stress, not seeing me for weeks on end and cancelling multiple plans, and for being my sounding board throughout the project. Also for testing the site and providing feedback from a user perspective.
