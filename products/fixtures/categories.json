@@ -29,5 +29,13 @@
             "name": "still_life",
             "friendly_name": "Still Life"
         }
+    },
+    {
+        "pk": 5,
+        "model": "products.category",
+        "fields": {
+            "name": "greeting_cards",
+            "friendly_name": "Greeting Cards"
+        }
     }
 ]
