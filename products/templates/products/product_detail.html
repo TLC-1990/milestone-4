@@ -25,6 +25,26 @@
                 </a>
                 {% endif %}
             </div>
+            {% if product.image_2 or product.image_3 %}
+            <div class="row mb-5">
+                {% if product.image_2 %}
+                <div class="col-6">
+                    <a href="{{ product.image_2.url }}" target="_blank">
+                        <img class="card-img-top img-fluid" src="{{ product.image_2.url }}"
+                            alt="{{ product.name }} - additional image 1">
+                    </a>
+                </div>
+                {% endif %}
+                {% if product.image_3 %}
+                <div class="col-6">
+                    <a href="{{ product.image_3.url }}" target="_blank">
+                        <img class="card-img-top img-fluid" src="{{ product.image_3.url }}"
+                            alt="{{ product.name }} - additional image 2">
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
         </div>
         <div class="col-12 col-md-6 order-2 order-md-2 mt-5">
             <div class="product-details-container mb-5 mt-mb-5">

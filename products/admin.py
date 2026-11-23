@@ -6,7 +6,7 @@ from .models import Product,Category
 class ProductAdmin(admin.ModelAdmin):
     """Admin view for Product model."""
     
-    list_display = ('name', 'category', 'price', 'image', 'material', 'dimensions', 'sold')
+    list_display = ('name', 'category', 'price', 'image', 'image_2', 'image_3', 'material', 'dimensions', 'sold')
     search_fields = ('name', 'description', 'material')
     list_filter = ('category',)
     

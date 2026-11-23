@@ -32,6 +32,8 @@ class Product(models.Model):
     material=models.CharField(max_length=254)
     price=models.DecimalField(max_digits=6,decimal_places=2)
     image=CloudinaryField('image',null=True,blank=True)
+    image_2=CloudinaryField('image_2',null=True,blank=True)
+    image_3=CloudinaryField('image_3',null=True,blank=True)
     sold = models.BooleanField(default=False)
     
     def __str__(self):
