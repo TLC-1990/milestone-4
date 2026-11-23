@@ -1,7 +1,7 @@
 """Admin configuration for Product and Category models."""
 from django.contrib import admin
 from .models import Product,Category
-# Register your models here.
+
 
 class ProductAdmin(admin.ModelAdmin):
     """Admin view for Product model."""
